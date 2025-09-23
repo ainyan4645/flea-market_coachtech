@@ -1,0 +1,109 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class ProductsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('products')->insert([
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/ArmaniMensClock.jpg',
+                'condition' => 1,   // 1:良好,2:目立った傷や汚れなし,3:やや傷や汚れあり,4:状態が悪い
+                'name' => '腕時計',
+                'brand' => 'Rolax',
+                'description' => 'スタイリッシュなデザインのメンズ腕時計',
+                'price' => 15000,
+            ],
+            [
+                'user_id' => 1,
+                'image_path' => 'products/HDDHardDisk.jpg',
+                'condition' => 2,
+                'name' => 'HDD',
+                'brand' => '西芝',
+                'description' => '高速で信頼性の高いハードディスク',
+                'price' => 5000,
+            ],
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/Onion.jpg',
+                'condition' => 3,
+                'name' => '玉ねぎ3束',
+                'brand' => 'なし',
+                'description' => '新鮮な玉ねぎ3束のセット',
+                'price' => 300,
+            ],
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/LeatherShoes.jpg',
+                'condition' => 4,
+                'name' => '革靴',
+                'brand' => '',
+                'description' => 'クラシックなデザインの革靴',
+                'price' => 4000,
+            ],
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/notePC.jpg',
+                'condition' => 1,
+                'name' => 'ノートPC',
+                'brand' => '',
+                'description' => '高性能なノートパソコン',
+                'price' => 45000,
+            ],
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/MusicMic.jpg',
+                'condition' => 2,
+                'name' => 'マイク',
+                'brand' => 'なし',
+                'description' => '高音質のレコーディング用マイク',
+                'price' => 8000,
+            ],
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/FashionBag.jpg',
+                'condition' => 3,
+                'name' => 'ショルダーバッグ',
+                'brand' => '',
+                'description' => 'おしゃれなショルダーバッグ',
+                'price' => 3500,
+            ],
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/TumblerSouvenir.jpg',
+                'condition' => 4,
+                'name' => 'タンブラー',
+                'brand' => 'なし',
+                'description' => '使いやすいタンブラー',
+                'price' => 500,
+            ],
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/CoffeeGrinder.jpg',
+                'condition' => 1,
+                'name' => 'コーヒーミル',
+                'brand' => 'Starbacks',
+                'description' => '手動のコーヒーミル',
+                'price' => 4000,
+            ],
+            [
+                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
+                'image_path' => 'products/MakeUpSet.jpg',
+                'condition' => 2,
+                'name' => 'メイクセット',
+                'brand' => '',
+                'description' => '便利なメイクアップセット',
+                'price' => 2500,
+            ],
+        ]);
+    }
+}
