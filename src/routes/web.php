@@ -16,4 +16,18 @@ use App\Http\Controllers\ItemController;
 
 Route::get('/', [ItemController::class, 'index']);
 
-Route::get('/item/{item}', [ItemController::class, 'detail']);
+
+
+// Route::get('/item/{item}', [ItemController::class, 'detail']);
+
+Route::get('/item', function() {
+    return view('item.detail');
+});
+
+
+
+
+
+// Route::get('/register', function() {
+//     return view('auth.register');
+// })->middleware('guest')->name('register');
