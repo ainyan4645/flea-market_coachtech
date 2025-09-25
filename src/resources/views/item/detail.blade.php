@@ -36,12 +36,32 @@
             <h3 class="content_detail_ttl">
                 商品説明
             </h3>
+            <p class="content_detail_txt">
+                カラー：グレー<br>
+                新品
+                商品の状態は良好です。傷もありません。<br>
+                購入後、即発送いたします。
+            </p>
         </div>
         <div class="content_type">
             <h3 class="content_type_ttl">
                 商品の情報
             </h3>
-        </div>
+            <div class="content_type-list">
+                <h4 class="content_type-category">
+                カテゴリー
+                </h4>
+                <ul class="content_type-category_inner">
+                    <li class="content_type-category_item">洋服</>
+                    <li class="content_type-category_item">メンズ</li>
+                </ul>
+            </div>
+            <div class="content_type-list">
+                <h4 class="content_type-condition">
+                    商品の状態
+                </h4>
+                <p class="content_type-condition_item">良好</p>
+            </div>
         <div class="content_comment">
             <h3 class="content_comment_ttl">
                 コメント(1)
