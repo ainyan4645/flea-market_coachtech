@@ -23,10 +23,16 @@
         </p>
         <div class="content_reaction">
             <div class="content_reaction_like">
-                ⭐️
+                <button class="content_reaction_like-btn">
+                    <img  class="content_reaction_like-icon" src="{{ asset('img/星アイコン.png') }}" alt="マイリストに追加">
+                </button>
+                <span class="content_reaction_like-cnt">1</span>
             </div>
             <div class="content_reaction_comment">
-                📝
+                <a class="content_reaction_comment-btn" href="#comments">
+                    <img class="content_reaction_comment-icon" src="{{ asset('img/ふきだしアイコン.png') }}" alt="コメント追加">
+                </a>
+                <span class="content_reaction_comment-cnt">2</span>
             </div>
         </div>
         <button class="content_purchase">
@@ -52,7 +58,10 @@
                 カテゴリー
                 </h4>
                 <ul class="content_type-category_inner">
-                    <li class="content_type-category_item">洋服</>
+                    <li class="content_type-category_item">洋服</li>
+                    <li class="content_type-category_item">メンズ</li>
+                    <li class="content_type-category_item">メンズ</li>
+                    <li class="content_type-category_item">メンズ</li>
                     <li class="content_type-category_item">メンズ</li>
                 </ul>
             </div>
@@ -62,7 +71,7 @@
                 </h4>
                 <p class="content_type-condition_item">良好</p>
             </div>
-        <div class="content_comment">
+        <div class="content_comment" id="comments">
             <h3 class="content_comment_ttl">
                 コメント(1)
             </h3>

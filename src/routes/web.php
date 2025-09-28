@@ -24,6 +24,11 @@ Route::get('/item', function() {
     return view('item.detail');
 });
 
+Route::get('/purchase', function() {
+    return view('purchase.confirm');
+});
+
+
 
 
 
