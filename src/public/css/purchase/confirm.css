@@ -1,18 +1,24 @@
 /* main全体 */
 .contents {
     display: flex;
+    justify-content: space-around;
     margin-top: 80px;
     height: calc(100vh - 80px);
 }
 
 /* 画面左側 */
 .option {
-    margin: 95px 50px 0px 80px;
+    margin-top: 95px;
+}
+
+.item,
+.payment,
+.address {
+    width: 805px;
+    border-bottom: 1px solid #000000;
 }
 
 .item {
-    width: 805px;
-    border-bottom: 1px solid #000000;
     display: flex;
 }
 
@@ -34,12 +40,108 @@
     width: 570px;
 }
 
-.item_detail_name {
+.item_detail_name,
+.item_detail_price {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 0;
+}
 
+.payment_ttl,
+.address_setting_ttl {
+    font-size: 20px;
+    font-weight: bold;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    margin: 0px 35px 10px 35px;
+}
+
+.payment_method {
+    width: 265px;
+    height: 30px;
+    border: 1px solid #5f5f5f;
+    border-radius: 4px;
+    margin: 0px 0px 65px 95px;
+}
+
+.address_setting {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address_setting_btn {
+    font-size: 20px;
+    height: 85px;
+    width: 115px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    all: unset;
+    cursor: pointer;
+    color: #0073cc;
+    margin: 0px 35px 10px 35px;
+}
+
+.address_postcode {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px 95px;
+}
+
+.address_detail {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 35px 60px 95px;
 }
 
 
 /* 画面右側 */
 .confirm {
-    margin: 95px 85px 0px 50px;
+    margin-top: 95px;
+}
+
+.confirm_inner {
+    border: 1px solid #000000;
+}
+
+.confirm_price {
+    border-bottom: 1px solid #000000;
+}
+
+.confirm_price,
+.confirm_payment {
+    display: flex;
+    width: 440px;
+    height: 115px;
+    align-items: center;
+}
+
+.confirm_ttl {
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+.confirm_option {
+    font-size: 24px;
+    width: 50%;
+    text-align: center;
+    border: none;
+    outline: none;
+    background: transparent;   /* 背景透明 */
+    -webkit-appearance: none;  /* Safari / Chrome */
+    -moz-appearance: none;     /* Firefox */
+    appearance: none;          /* 標準 */
+}
+
+.confirm_purchase {
+    width: 440px;
+    height: 60px;
+    background-color: #ff5555;
+    border: none;
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 65px;
 }

@@ -16,6 +16,13 @@ use App\Http\Controllers\ItemController;
 
 Route::get('/', [ItemController::class, 'index']);
 
+Route::get('/register', function() {
+    return view('auth.register');
+});
+
+Route::get('/login', function() {
+    return view('auth.login');
+});
 
 
 // Route::get('/item/{item}', [ItemController::class, 'detail']);
@@ -28,8 +35,21 @@ Route::get('/purchase', function() {
     return view('purchase.confirm');
 });
 
+Route::get('/purchase/address', function() {
+    return view('purchase.address');
+});
 
+Route::get('/sell', function() {
+    return view('item.sell');
+});
 
+Route::get('/mypage', function() {
+    return view('mypage.mypage');
+});
+
+Route::get('/mypage/profile', function() {
+    return view('mypage.mypage_edit');
+});
 
 
 

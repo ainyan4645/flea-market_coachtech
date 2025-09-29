@@ -3,8 +3,8 @@
     display: flex;
 }
 
-.content_img,
-.content_info {
+.item,
+.info {
     width: 50%;
     box-sizing: border-box;
 }
@@ -13,53 +13,53 @@
 
 /*商品画像(画面左側)*/
 
-.content_img {
+.item {
     padding: 35px 45px 0px;
     position: relative;
 }
 
-.content_img_inner {
+.item_inner {
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;   /*はみ出し部分を非表示*/
     border-radius: 4px;
+    background-color: #d9d9d9;
     position: sticky;
     top: 210px;
 }
 
-.img {
+item_img {
     width: 100%;
     height: 100%;
     object-fit: cover;  /*枠いっぱい表示＆枠外切り取り*/
-    background-color: #d9d9d9;
 }
 
 
 
 /*商品詳細(画面右側)*/
 
-.content_info {
+.info {
     padding: 0px 55px 35px 65px;
     overflow-y: auto; /* 縦スクロール */
 }
 
-.content_ttl {
+.ttl {
     font-size: 45px;
     font-weight: bold;
     margin: 5px 0px;
 }
 
-.content_brand {
+.brand {
     font-size: 20px;
     margin: 0px 0px 25px;
 }
 
-.content_price {
+.price {
     font-size: 30px;
     margin: 0px 0px 25px;
 }
 
-.content_reaction {
+.reaction {
     height: 65px;
     width: 145px;
     margin-left: 45px;
@@ -67,8 +67,8 @@
     gap: 65px;
 }
 
-.content_reaction_like-btn,
-.content_reaction_comment-btn {
+.reaction_like_btn,
+.reaction_comment_btn {
     padding: 0;
     background: none;
     border: none;
@@ -77,14 +77,14 @@
     /* outline: none;      フォーカス時の青枠などを消す */
 }
 
-.content_reaction_like-icon,
-.content_reaction_comment-icon {
+.reaction_like_icon,
+.reaction_comment_icon {
     width: 100%;
     margin-bottom: 5px;
 }
 
-.content_reaction_like-cnt,
-.content_reaction_comment-cnt {
+.reaction_like_cnt,
+.reaction_comment_cnt {
     font-size: 18px;
     font-weight: bold;
     display: inline-block;
@@ -92,7 +92,7 @@
     text-align: center;
 }
 
-.content_purchase {
+.purchase {
     font-size: 30px;
     font-weight: bold;
     height: 55px;
@@ -104,23 +104,23 @@
     color: #ffffff;
 }
 
-.content_detail_ttl,
-.content_type_ttl {
+.detail_ttl,
+.type_ttl {
     font-size: 36px;
     font-weight: bold;
 }
 
-.content_detail_txt {
+.detail_txt {
     font-size: 24px;
     line-height: 200%;
 }
 
-.content_type-list {
+.type_list {
     display: flex;
 }
 
-.content_type-category,
-.content_type-condition {
+.type_category,
+.type_condition {
     font-size: 24px;
     font-weight: bold;
     width: 135px;
@@ -128,7 +128,7 @@
     margin: 0px 60px 0px 0px;
 }
 
-.content_type-category_inner {
+.type_category_inner {
     display: flex;
     flex-wrap: wrap;
     flex: 1;
@@ -138,7 +138,7 @@
     list-style: none;
 }
 
-.content_type-category_item {
+.type_category_item {
     font-size: 20px;
     background-color: #D9D9D9;
     border-radius: 15px;
@@ -147,14 +147,63 @@
     text-align: center;
 }
 
-.content_type-condition {
+.type_condition {
     display: flex;
     align-items: center;
     height: 100px;
 }
 
-.content_type-condition_item {
+.type_condition_item {
     font-size: 20px;
     display: flex;
     align-items: center;
+}
+
+.comment_ttl {
+    font-size: 36px;
+    font-weight: bold;
+    color: #5f5f5f;
+}
+
+.comment_item {
+
+}
+
+.comment_header {
+    display: flex;
+}
+
+.comment_icon_inner {
+    background-color: #d9d9d9;
+    width: 70px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.comment_icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /*枠いっぱい表示＆枠外切り取り*/
+}
+
+.comment_user {
+    font-size: 30px;
+    font-weight: bold;
+    height: 70px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.comment_body {
+    height: 70px;
+    background-color: #d9d9d9;
+    font-size: 20px;
+    font-weight: light;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
 }
