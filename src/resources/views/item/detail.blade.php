@@ -88,12 +88,12 @@
                 こちらにコメントが入ります。
             </p>
         </div>
-        <form class="comment_input" action="">
+        <form action="">
             <h4 class="comment_input_ttl">
                 商品へのコメント
             </h4>
             <input type="text" class="comment_input_txt">
-            <button class="commnet_input_btn">
+            <button class="comment_input_btn">
                 コメントを送信する
             </button>
         </form>

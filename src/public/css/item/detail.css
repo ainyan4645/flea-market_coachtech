@@ -207,3 +207,27 @@ item_img {
     align-items: center;
     margin-bottom: 40px;
 }
+
+.comment_input_ttl {
+    font-size: 28px;
+    font-weight: bold;
+    height: 50px;
+    margin: 0;
+}
+
+.comment_input_txt {
+    height: 245px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.comment_input_btn {
+    font-size: 25px;
+    font-weight: bold;
+    height: 55px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff5555;
+    color: #ffffff;
+}
