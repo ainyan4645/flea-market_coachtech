@@ -27,7 +27,12 @@
         </h3>
         <ul class="type_category_inner">
             <!-- あとでforeachで議一つにする -->
-            <li class="type_category_item">ファッション</li>
+            <li>
+                <label class="type_category_item">
+                    <input type="checkbox" class="type_category_check">
+                    ファッション
+                </label>
+            </li>
             <li class="type_category_item">家電</li>
             <li class="type_category_item">インテリア</li>
             <li class="type_category_item">レディース</li>
