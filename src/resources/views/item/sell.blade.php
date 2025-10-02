@@ -33,7 +33,12 @@
                     ファッション
                 </label>
             </li>
-            <li class="type_category_item">家電</li>
+            <li>
+                <label class="type_category_item">
+                    <input type="checkbox" class="type_category_check">
+                    家電
+                </label>
+            </li>
             <li class="type_category_item">インテリア</li>
             <li class="type_category_item">レディース</li>
             <li class="type_category_item">メンズ</li>
@@ -50,8 +55,8 @@
         <h3 class="type_condition_ttl">
             商品の状態
         </h3>
-        <select class="type_condition_select" name="" id="">
-            選択してください
+        <select class="type_condition_select" name="">
+            <option value="">選択してください</option>
         </select>
         <h2 class="detail_ttl">
             商品名と説明
@@ -71,7 +76,10 @@
         <h3 class="detail_price_ttl">
             販売価格
         </h3>
-        <input type="text" class="detail_price_input">¥
+        <div class="detail_price_wrapper">
+            <span class="detail_price_prefix">¥</span>
+            <input type="text" class="detail_price_input" placeholder="1000">
+        </div>
         <button class="sell_btn">
             出品する
         </button>
