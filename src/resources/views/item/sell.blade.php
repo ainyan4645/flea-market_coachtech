@@ -56,7 +56,10 @@
             商品の状態
         </h3>
         <select class="type_condition_select" name="">
-            <option value="">選択してください</option>
+            <option class="type_condition_select-option" value="">良好</option>
+            <option class="type_condition_select-option" value="new">目立った傷や汚れなし</option>
+            <option class="type_condition_select-option" value="used">やや傷や汚れあり</option>
+            <option class="type_condition_select-option" value="other">状態が悪い</option>
         </select>
         <h2 class="detail_ttl">
             商品名と説明
@@ -78,7 +81,7 @@
         </h3>
         <div class="detail_price_wrapper">
             <span class="detail_price_prefix">¥</span>
-            <input type="text" class="detail_price_input" placeholder="1000">
+            <input type="text" class="detail_price_input">
         </div>
         <button class="sell_btn">
             出品する

@@ -20,61 +20,61 @@
     </div>
 
     <!-- 商品リスト部分 -->
-        <ul class="content__list">
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="" alt="商品1">
-                    </div>
-                    <p class="content__ttl">商品_おすすめ</p>
-                </li>
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="" alt="商品2">
-                    </div>
-                    <p class="content__ttl">商品_マイリスト</p>
-                </li>
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img src="" alt="商品2">
-                    </div>
-                    <p class="content__ttl">商品_マイリスト</p>
-                </li>
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="" alt="商品2">
-                    </div>
-                    <p class="content__ttl">商品_マイリスト</p>
-                </li>
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="" alt="商品2">
-                    </div>
-                    <p class="content__ttl">商品_マイリスト</p>
-                </li>
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="" alt="商品2">
-                    </div>
-                    <p class="content__ttl">商品_マイリスト</p>
-                </li>
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="" alt="商品1">
-                    </div>
-                    <p class="content__ttl">商品_おすすめ</p>
-                </li>
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="" alt="商品1">
-                    </div>
-                    <p class="content__ttl">商品_おすすめ</p>
-                </li>
-                <li class="content__card">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="" alt="商品1">
-                    </div>
-                    <p class="content__ttl">商品_おすすめ</p>
-                </li>
-        </ul>
+    <ul class="content__list">
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img class="content__img" src="" alt="商品1">
+                </div>
+                <p class="content__ttl">商品_おすすめ</p>
+            </li>
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img class="content__img" src="" alt="商品2">
+                </div>
+                <p class="content__ttl">商品_マイリスト</p>
+            </li>
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img src="" alt="商品2">
+                </div>
+                <p class="content__ttl">商品_マイリスト</p>
+            </li>
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img class="content__img" src="" alt="商品2">
+                </div>
+                <p class="content__ttl">商品_マイリスト</p>
+            </li>
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img class="content__img" src="" alt="商品2">
+                </div>
+                <p class="content__ttl">商品_マイリスト</p>
+            </li>
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img class="content__img" src="" alt="商品2">
+                </div>
+                <p class="content__ttl">商品_マイリスト</p>
+            </li>
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img class="content__img" src="" alt="商品1">
+                </div>
+                <p class="content__ttl">商品_おすすめ</p>
+            </li>
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img class="content__img" src="" alt="商品1">
+                </div>
+                <p class="content__ttl">商品_おすすめ</p>
+            </li>
+            <li class="content__card">
+                <div class="content__img__inner">
+                    <img class="content__img" src="" alt="商品1">
+                </div>
+                <p class="content__ttl">商品_おすすめ</p>
+            </li>
+    </ul>
 </main>
 @endsection
