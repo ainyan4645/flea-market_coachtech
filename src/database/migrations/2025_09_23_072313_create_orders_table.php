@@ -15,6 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('buyer_id')->constrained('users')->onDelete('cascade'); // 購入者
+            $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();    // 商品削除後も履歴を保持
+            $table->string('payment_method');
+            $table->string('postal_code');
+            $table->string('address');
+            $table->string('building')->nullable();
             $table->timestamps();
         });
     }

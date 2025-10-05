@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Product;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -13,10 +14,10 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->insert([
+        $products = [
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/ArmaniMensClock.jpg',
+                'user_id' => 1,   // 出品テストユーザー
+                'image_path' => 'img/products/ArmaniMensClock.jpg',
                 'condition' => 1,   // 1:良好,2:目立った傷や汚れなし,3:やや傷や汚れあり,4:状態が悪い
                 'name' => '腕時計',
                 'brand' => 'Rolax',
@@ -25,7 +26,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'products/HDDHardDisk.jpg',
+                'image_path' => 'img/products/HDDHardDisk.jpg',
                 'condition' => 2,
                 'name' => 'HDD',
                 'brand' => '西芝',
@@ -33,8 +34,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 5000,
             ],
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/Onion.jpg',
+                'user_id' => 1,
+                'image_path' => 'img/products/Onion.jpg',
                 'condition' => 3,
                 'name' => '玉ねぎ3束',
                 'brand' => 'なし',
@@ -42,8 +43,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 300,
             ],
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/LeatherShoes.jpg',
+                'user_id' => 1,
+                'image_path' => 'img/products/LeatherShoes.jpg',
                 'condition' => 4,
                 'name' => '革靴',
                 'brand' => '',
@@ -51,8 +52,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 4000,
             ],
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/notePC.jpg',
+                'user_id' => 1,
+                'image_path' => 'img/products/notePC.jpg',
                 'condition' => 1,
                 'name' => 'ノートPC',
                 'brand' => '',
@@ -60,8 +61,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 45000,
             ],
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/MusicMic.jpg',
+                'user_id' => 1,
+                'image_path' => 'img/products/MusicMic.jpg',
                 'condition' => 2,
                 'name' => 'マイク',
                 'brand' => 'なし',
@@ -69,8 +70,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 8000,
             ],
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/FashionBag.jpg',
+                'user_id' => 1,
+                'image_path' => 'img/products/FashionBag.jpg',
                 'condition' => 3,
                 'name' => 'ショルダーバッグ',
                 'brand' => '',
@@ -78,8 +79,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 3500,
             ],
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/TumblerSouvenir.jpg',
+                'user_id' => 1,
+                'image_path' => 'img/products/TumblerSouvenir.jpg',
                 'condition' => 4,
                 'name' => 'タンブラー',
                 'brand' => 'なし',
@@ -87,8 +88,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => 500,
             ],
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/CoffeeGrinder.jpg',
+                'user_id' => 1,
+                'image_path' => 'img/products/CoffeeGrinder.jpg',
                 'condition' => 1,
                 'name' => 'コーヒーミル',
                 'brand' => 'Starbacks',
@@ -96,14 +97,18 @@ class ProductsTableSeeder extends Seeder
                 'price' => 4000,
             ],
             [
-                'user_id' => 1,   // 出品者ID（仮で1番ユーザ
-                'image_path' => 'products/MakeUpSet.jpg',
+                'user_id' => 1,
+                'image_path' => 'img/products/MakeUpSet.jpg',
                 'condition' => 2,
                 'name' => 'メイクセット',
                 'brand' => '',
                 'description' => '便利なメイクアップセット',
                 'price' => 2500,
             ],
-        ]);
+        ];
+
+        foreach ($products as $product) {
+            Product::create($product);
+        }
     }
 }

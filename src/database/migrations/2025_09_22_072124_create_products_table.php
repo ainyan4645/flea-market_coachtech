@@ -15,9 +15,8 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()
-            ->onDelete('cascade');   // 出品者（users.id）
-            $table->string('image_path')->nullable();   // 商品画像
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');   // 出品者（users.id）
+            $table->string('image_path');   // 商品画像
             $table->tinyInteger('condition')->comment('1:良好,2:目立った傷や汚れなし,3:やや傷や汚れあり,4:状態が悪い');   // 商品状態
             $table->string('name');   // 商品名
             $table->string('brand')->nullable();   // ブランド名
