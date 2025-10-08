@@ -14,13 +14,32 @@
         <a href="" class="header-logo__inner">
             <img src="{{ asset('img/logo.svg') }}" alt="header-logo" class="header-logo_img">
         </a>
+        @if (!isset($hideHeaderNav) || !$hideHeaderNav)
         <form class="search-box" action="" method="">
             <input class="search-box__keyword" type="text" name="keyword" value="なにをお探しですか？">
         </form>
         <nav class="header-nav">
             <ul class="header-nav__inner">
+            {{-- ログイン中 --}}
+                @if (Auth::check())
                 <li class="header-nav__ttl__black">
-                    <a class="header-nav__ttl__txt" href="">ログアウト</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="header-nav__ttl__txt">ログアウト</button>
+                    </form>
+                </li>
+                <li class="header-nav__ttl__black">
+                    <a class="header-nav__ttl__txt" href="{{ route('mypage') }}">マイページ</a>
+                </li>
+                <li class="header-nav__ttl__white">
+                    <a class="header-nav__ttl__txt" href="{{ route('item.sell') }}">出品</a>
+                </li>
+                @endif
+
+                {{-- 非ログイン中 --}}
+                @if (!Auth::check())
+                <li class="header-nav__ttl__black">
+                    <a class="header-nav__ttl__txt" href="">ログイン</a>
                 </li>
                 <li class="header-nav__ttl__black">
                     <a class="header-nav__ttl__txt" href="">マイページ</a>
@@ -28,10 +47,11 @@
                 <li class="header-nav__ttl__white">
                     <a class="header-nav__ttl__txt" href="">出品</a>
                 </li>
+                @endif
             </ul>
         </nav>
+        @endif
     </header>
-    
     @yield('content')
 </body>
 </html>

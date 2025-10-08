@@ -13,6 +13,11 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 
+use App\Http\Requests\RegisterUserRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -28,9 +33,6 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // 会員登録処理
-        Fortify::createUsersUsing(CreateNewUser::class);
-
         // 登録ページ
         Fortify::registerView(function () {
             return view('auth.register');
@@ -47,5 +49,27 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(10)->by($email . $request->ip());
         });
+
+        // 会員登録ロジック
+        Fortify::createUsersUsing(function (RegisterUserRequest $request) {
+            return User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+        });
+
+        // ログインロジック
+        Fortify::authenticateUsing(function (LoginRequest $request) {
+            $user = User::where('email', $request->email)->first();
+
+            // ユーザーが存在し、パスワードが一致するか確認
+            if ($user && Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+
+            // 不一致の場合は null（認証失敗）
+            return null;
+            });
     }
 }
