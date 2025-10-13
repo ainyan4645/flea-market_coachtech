@@ -56,9 +56,16 @@
 }
 
 .header-nav__ttl__txt {
+    display: inline-flex; /* flexにして縦中央揃え */
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     font-size: 24px;
     color: #ffffff;
+    background: none;       /* buttonの背景を消す */
+    border: none;           /* buttonの枠線を消す */
+    padding: 0;             /* buttonの余白をリセット */
+    cursor: pointer;        /* ボタンカーソルにする */
 }
 
 .header-nav__ttl__white {
@@ -69,6 +76,7 @@
     width: 100px;
     background-color: #ffffff;
     border-radius: 4px;
+    margin-left: 10px;
 }
 
 .header-nav__ttl__white .header-nav__ttl__txt {

@@ -11,21 +11,24 @@
     <h1 class="contents_ttl">
         ログイン
     </h1>
-    <form class="login" action="/login" method="POST">
+    <form class="login" action="/login" method="POST" novalidate>
         @csrf
-        @if ($errors->has('email') && $errors->first('email') === __('auth.failed'))
-        <span class="error">ログイン情報が登録されていません</span>
-        @endif
         <h2 class="login_email">
             メールアドレス
         </h2>
+        @error('email')
+        <div class="error">{{ $message }}</div>
+        @enderror
         <input type="email" name="email" value="{{ old('email') }}" class="login_email_input">
         <h2 class="login_pwd">
             パスワード
         </h2>
+        @error('password')
+        <div class="error">{{ $message }}</div>
+        @enderror
         <input type="password" name="password" class="login_pwd_input">
         <button class="login_btn">ログインする</button>
     </form>
-    <a href="" class="register_link">会員登録はこちら</a>
+    <a href="{{ route('register') }}" class="register_link">会員登録はこちら</a>
 </main>
 @endsection

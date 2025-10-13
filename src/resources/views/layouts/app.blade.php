@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="header__inner">
-        <a href="" class="header-logo__inner">
+        <a href="/" class="header-logo__inner">
             <img src="{{ asset('img/logo.svg') }}" alt="header-logo" class="header-logo_img">
         </a>
         @if (!isset($hideHeaderNav) || !$hideHeaderNav)
@@ -21,7 +21,7 @@
         <nav class="header-nav">
             <ul class="header-nav__inner">
             {{-- ログイン中 --}}
-                @if (Auth::check())
+                @auth
                 <li class="header-nav__ttl__black">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -32,22 +32,22 @@
                     <a class="header-nav__ttl__txt" href="{{ route('mypage') }}">マイページ</a>
                 </li>
                 <li class="header-nav__ttl__white">
-                    <a class="header-nav__ttl__txt" href="{{ route('item.sell') }}">出品</a>
+                    <a class="header-nav__ttl__txt" href="{{ route('sell') }}">出品</a>
                 </li>
-                @endif
+                @endauth
 
                 {{-- 非ログイン中 --}}
-                @if (!Auth::check())
+                @guest
                 <li class="header-nav__ttl__black">
-                    <a class="header-nav__ttl__txt" href="">ログイン</a>
+                    <a class="header-nav__ttl__txt" href="{{ route('login') }}">ログイン</a>
                 </li>
                 <li class="header-nav__ttl__black">
-                    <a class="header-nav__ttl__txt" href="">マイページ</a>
+                    <a class="header-nav__ttl__txt" href="{{ route('login') }}">マイページ</a>
                 </li>
                 <li class="header-nav__ttl__white">
-                    <a class="header-nav__ttl__txt" href="">出品</a>
+                    <a class="header-nav__ttl__txt" href="{{ route('login') }}">出品</a>
                 </li>
-                @endif
+                @endguest
             </ul>
         </nav>
         @endif
