@@ -18,7 +18,7 @@
     position: relative;
 }
 
-.item_inner {
+.item__inner {
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;   /*はみ出し部分を非表示*/
@@ -28,12 +28,27 @@
     top: 210px;
 }
 
-item_img {
+.item__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /*枠いっぱい表示＆枠外切り取り*/
+    object-fit: contain;  /*全体表示*/
+    object-position: center;
+    display: block;
+    background-color: #fff;
 }
 
+.no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d9d9d9;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
 
 
 /*商品詳細(画面右側)*/

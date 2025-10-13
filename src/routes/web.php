@@ -16,19 +16,11 @@ use App\Http\Controllers\MypageController;
 |
 */
 
-
-/** ゲストアクセス可能 **/
-
 /* 商品一覧画面(TOP) */
 Route::get('/', [ItemController::class, 'index']);
 
 /* 商品詳細画面 */
-Route::get('/item', function() {
-    return view('item.detail');
-});
-
-// Route::get('/item/{item}', [ItemController::class, 'detail']);
-
+Route::get('/item/{id}', [ItemController::class, 'detail'])->name('item.detail');
 
 
 /** ゲストユーザ **/
@@ -40,9 +32,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginValid']);
 });
-
-
-// Fortifyが /login POST を担当
 
 
 /** ログインユーザのみ **/
@@ -66,4 +55,8 @@ Route::middleware(['auth'])->group(function () {
     /* プロフィール編集画面 */
     Route::get('/mypage/profile', [MypageController::class, 'mypageEdit'])->name('mypage.edit');
     Route::post('mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
+
+    Route::post('/item/{id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
+
+    Route::post('/item/{id}/comment', [ItemController::class, 'comment'])->name('item.comment');
 });

@@ -7,32 +7,39 @@
 @section('content')
 <main class="content">
     <section class="item">
-        <div class="item_inner">
-            <img src="" alt="商品画像" class="item_img">
+        <div class="item__inner">
+            @if ($product->image_url)
+                <img class="item__img" src="{{ $product->image_url }}" alt="{{ $product->name }}">
+            @else
+                <div class="no-image">NO IMAGE</div>
+            @endif
         </div>
     </section>
     <section class="info">
         <h1 class="ttl">
-            商品名がここに入る
+            {{ $product->name }}
         </h1>
         <h2 class="brand">
-            ブランド名
+            {{ $product->brand ?? '' }}
         </h2>
         <p class="price">
-            ¥47,000(税込)
+            ¥{{ number_format($product->price) }} (税込)
         </p>
         <div class="reaction">
             <div class="reaction_like">
-                <button class="reaction_like_btn">
-                    <img  class="reaction_like_icon" src="{{ asset('img/星アイコン.png') }}" alt="マイリストに追加">
-                </button>
-                <span class="reaction_like_cnt">1</span>
+                <form action="{{ route('product.favorite', $product->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="reaction_like_btn">
+                        <img  class="reaction_like_icon" src="{{ asset('img/星アイコン.png') }}" alt="マイリストに追加">
+                    </button>
+                </form>
+                <span class="reaction_like_cnt">{{ $product->likes()->count() }}</span>
             </div>
             <div class="reaction_comment">
                 <div class="reaction_comment_btn">
                     <img class="reaction_comment_icon" src="{{ asset('img/ふきだしアイコン.png') }}" alt="コメント追加">
                 </div>
-                <span class="reaction_comment_cnt">2</span>
+                <span class="reaction_comment_cnt">{{ $product->comments()->count() }}</span>
             </div>
         </div>
         <button class="purchase">
@@ -43,10 +50,7 @@
                 商品説明
             </h3>
             <p class="detail_txt">
-                カラー：グレー<br>
-                新品
-                商品の状態は良好です。傷もありません。<br>
-                購入後、即発送いたします。
+                {{ $product->description }}
             </p>
         </div>
         <div class="type">
@@ -73,19 +77,20 @@
             </div>
         </div>
         <h3 class="comment_ttl">
-            コメント(1)
+            コメント({{ $product->comments()->count() }})
         </h3>
+        @foreach($product->comments as $comment)
         <div class="comment_item">
             <div class="comment_header">
                 <div class="comment_icon_inner">
-                    <img class="comment_icon" src="" alt="ユーザアイコン">
+                    <img class="comment_icon" src="{{ $comment->user->icon ?? '' }}" alt="{{ $comment->user->name }}">
                 </div>
                 <span class="comment_user">
-                    admin
+                    {{ $comment->user->name }}
                 </span>
             </div>
             <p class="comment_body">
-                こちらにコメントが入ります。
+                {{ $comment->body }}
             </p>
         </div>
         <form action="">

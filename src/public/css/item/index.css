@@ -57,18 +57,24 @@
     width: 290px;
 }
 
+.content__card__link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .content__img__inner {
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;   /*はみ出し部分を非表示*/
     border-radius: 4px;
-    padding-bottom: 5px;
 }
 
 .content__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /*枠いっぱい表示＆枠外切り取り*/
+    object-fit: contain;  /*全体表示*/
+    object-position: center;
+    display: block;
     background-color: #d9d9d9;
 }
 
@@ -89,8 +95,9 @@
     font-size: 25px;
     color: #000000;
     height: 30px;
-    margin: 0px;
+    margin: 5px 0px 0px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    text-decoration: none;
 }
