@@ -108,6 +108,10 @@
 }
 
 .purchase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     font-size: 30px;
     font-weight: bold;
     height: 55px;
@@ -231,8 +235,10 @@
 }
 
 .comment_input_txt {
+    font-size: 20px;
     height: 245px;
     width: 100%;
+    padding: 10px;
     margin-bottom: 50px;
 }
 
@@ -245,4 +251,11 @@
     border-radius: 4px;
     background-color: #ff5555;
     color: #ffffff;
+}
+
+.error {
+    color: #ff5555;
+    display: flex;
+    justify-content: left;
+    font-size: 20px;
 }

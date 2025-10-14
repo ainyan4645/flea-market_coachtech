@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +38,7 @@ Route::middleware('guest')->group(function () {
 /** ログインユーザのみ **/
 Route::middleware(['auth'])->group(function () {
     /* 商品購入画面 */
-    Route::get('/purchase', function() {
-    return view('purchase.confirm');
-    });
+    Route::get('/purchase/{id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
 
     /* 住所変更ページ */
     Route::get('/purchase/address', function() {

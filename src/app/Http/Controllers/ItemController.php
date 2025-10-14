@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 use App\Models\Product;
 use App\Models\Like;
 use App\Models\Comment;
@@ -30,7 +31,8 @@ class ItemController extends Controller
     public function detail($id)
     {
         $product = Product::findOrFail($id);
-        return view('item.detail', compact('product'));
+        $comments = $product->comments()->latest()->get(); // 新しい順
+        return view('item.detail', compact('product', 'comments'));
     }
 
     // お気に入り機能
@@ -57,12 +59,8 @@ class ItemController extends Controller
         return back(); // 前のページにリダイレクト
     }
 
-    public function comment(Request $request, $id)
+    public function comment(CommentRequest $request, $id)
     {
-        $request->validate([
-            'body' => 'required|string|max:1000',
-        ]);
-
         $product = Product::findOrFail($id);
 
         Comment::create([
@@ -71,7 +69,7 @@ class ItemController extends Controller
             'body' => $request->body,
         ]);
 
-        return back(); // 前のページにリダイレクト
+        return back();
     }
 
     public function sell()

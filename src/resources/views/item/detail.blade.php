@@ -39,12 +39,10 @@
                 <div class="reaction_comment_btn">
                     <img class="reaction_comment_icon" src="{{ asset('img/ふきだしアイコン.png') }}" alt="コメント追加">
                 </div>
-                <span class="reaction_comment_cnt">{{ $product->comments()->count() }}</span>
+                <span class="reaction_comment_cnt">{{ $comments->count() }}</span>
             </div>
         </div>
-        <button class="purchase">
-            購入手続きへ
-        </button>
+        <a href="{{ route('purchase.confirm', $product->id) }}" class="purchase">購入手続きへ</a>
         <div class="detail">
             <h3 class="detail_ttl">
                 商品説明
@@ -86,19 +84,24 @@
                     <img class="comment_icon" src="{{ $comment->user->icon ?? '' }}" alt="{{ $comment->user->name }}">
                 </div>
                 <span class="comment_user">
-                    {{ $comment->user->name }}
+                    {{ $comment->user->name ?? '匿名ユーザー' }}
                 </span>
             </div>
             <p class="comment_body">
                 {{ $comment->body }}
             </p>
         </div>
-        <form action="">
+        @endforeach
+        <form action="{{ route('item.comment', $product->id) }}" method="POST">
+            @csrf
             <h4 class="comment_input_ttl">
                 商品へのコメント
             </h4>
-            <input type="text" class="comment_input_txt">
-            <button class="comment_input_btn">
+            @error('body')
+                <div class="error">{{ $message }}</div>
+            @enderror
+            <textarea name="body" class="comment_input_txt">{{ old('body') }}</textarea>
+            <button class="comment_input_btn" type="submit">
                 コメントを送信する
             </button>
         </form>
