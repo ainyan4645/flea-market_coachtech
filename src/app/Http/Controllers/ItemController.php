@@ -19,7 +19,7 @@ class ItemController extends Controller
         if ($tab === 'recommend') {
             $products = Product::all(); // おすすめ商品（全商品）
         } elseif ($tab === 'mylist' && auth()->check()) {
-            $products = auth()->user()->myListProducts; // ユーザーのお気に入りリスト
+            $products = auth()->user()->myListProducts ?? collect(); // ユーザーのお気に入りリスト
         } else {
             $products = collect(); // 空コレクション
         }
@@ -30,7 +30,8 @@ class ItemController extends Controller
     // 商品詳細表示
     public function detail($id)
     {
-        $product = Product::findOrFail($id);
+        // $product = Product::findOrFail($id);
+        $product = Product::with('categories')->findOrFail($id);
         $comments = $product->comments()->latest()->get(); // 新しい順
         return view('item.detail', compact('product', 'comments'));
     }

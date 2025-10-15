@@ -60,25 +60,30 @@
                 カテゴリー
                 </h4>
                 <ul class="type_category_inner">
-                    <li class="type_category_item">洋服</li>
-                    <li class="type_category_item">メンズ</li>
-                    <li class="type_category_item">メンズ</li>
-                    <li class="type_category_item">メンズ</li>
-                    <li class="type_category_item">メンズ</li>
+                    @forelse($product->categories as $category)
+                    <li class="type_category_item">
+                        {{ $category->name }}
+                    </li>
+                    @empty
+                    <li class="type_category_item">
+                        未設定
+                    </li>
+                    @endforelse
                 </ul>
             </div>
             <div class="type_list">
                 <h4 class="type_condition">
                     商品の状態
                 </h4>
-                <p class="type_condition_item">良好</p>
+                <p class="type_condition_item">
+                    {{ $product->condition_label }}
+                </p>
             </div>
         </div>
         <h3 class="comment_ttl">
             コメント({{ $product->comments()->count() }})
         </h3>
         @foreach($product->comments as $comment)
-        <div class="comment_item">
             <div class="comment_header">
                 <div class="comment_icon_inner">
                     <img class="comment_icon" src="{{ $comment->user->icon ?? '' }}" alt="{{ $comment->user->name }}">
@@ -90,7 +95,6 @@
             <p class="comment_body">
                 {{ $comment->body }}
             </p>
-        </div>
         @endforeach
         <form action="{{ route('item.comment', $product->id) }}" method="POST">
             @csrf

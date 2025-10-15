@@ -61,4 +61,17 @@ class Product extends Model
         // どちらにもない場合はnull（＝画像なし）
         return null;
     }
+
+    // 商品状態ラベルを返すアクセサ
+    public function getConditionLabelAttribute()
+    {
+        return match ($this->condition) {
+            1 => '良好',
+            2 => '目立った傷や汚れなし',
+            3 => 'やや傷や汚れあり',
+            4 => '状態が悪い',
+            default => '未設定',
+        };
+    }
+
 }

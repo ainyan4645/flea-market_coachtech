@@ -28,7 +28,7 @@
 
     <!-- 商品リスト部分 -->
     <ul class="content__list">
-        @foreach($products as $product)
+        @forelse($products as $product)
             <li class="content__card">
                 <a href="{{ route('item.detail', $product->id) }}" class="content__card__link">
                     <div class="content__img__inner">
@@ -41,7 +41,9 @@
                     <p class="content__ttl">{{ $product->name }}</p>
                 </a>
             </li>
-        @endforeach
+        @empty
+            <li class="content__card">お気に入り商品はありません</li>
+        @endforelse
     </ul>
 </main>
 @endsection

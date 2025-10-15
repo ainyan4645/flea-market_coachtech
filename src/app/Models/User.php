@@ -67,4 +67,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    /* ユーザーのお気に入り商品 */
+    public function myListProducts()
+    {
+        return $this->belongsToMany(Product::class, 'likes')->withTimestamps();
+    }
+
 }
