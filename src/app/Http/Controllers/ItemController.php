@@ -13,27 +13,56 @@ use Illuminate\Support\Facades\Auth;
 class ItemController extends Controller
 {
     public function index(Request $request)
-    {
-        $tab = $request->query('tab', 'recommend'); // タブ判定
+{
+    $tab = $request->query('tab', 'recommend'); // タブ判定
+    $keyword = $request->query('keyword');      // 検索キーワード取得
 
-        if ($tab === 'recommend') {
-            $products = Product::all(); // おすすめ商品（全商品）
-        } elseif ($tab === 'mylist' && auth()->check()) {
-            $products = auth()->user()->myListProducts ?? collect(); // ユーザーのお気に入りリスト
-        } else {
-            $products = collect(); // 空コレクション
+    if ($tab === 'recommend') {
+        // おすすめ：全商品の中から検索
+        $query = Product::query();
+
+        if ($keyword) {
+            $query->where('name', 'like', "%{$keyword}%");
         }
 
-        return view('item.index', compact('products', 'tab'));
+        $products = $query->get();
+
+    } elseif ($tab === 'mylist' && auth()->check()) {
+        // お気に入り商品の中から検索
+        $user = auth()->user();
+
+        // ユーザーのお気に入り商品IDを取得
+        $myListIds = $user->myListProducts()->pluck('products.id'); 
+        // ↑ myListProducts リレーションが Product モデルを返す想定
+
+        $query = Product::whereIn('id', $myListIds);
+
+        if ($keyword) {
+            $query->where('name', 'like', "%{$keyword}%");
+        }
+
+        $products = $query->get();
+
+
+    } else {
+        // 未ログインでmylistを開いた場合など
+        $products = collect();
     }
+
+    return view('item.index', compact('products', 'tab'));
+}
+
 
     // 商品詳細表示
     public function detail($id)
     {
-        // $product = Product::findOrFail($id);
-        $product = Product::with('categories')->findOrFail($id);
+        $product = Product::with('categories', 'likes', 'comments')->findOrFail($id);
+        $isFavorite = false;
+        if (Auth::check()) {
+            $isFavorite = $product->likes()->where('user_id', Auth::id())->exists();
+        }
         $comments = $product->comments()->latest()->get(); // 新しい順
-        return view('item.detail', compact('product', 'comments'));
+        return view('item.detail', compact('product', 'isFavorite', 'comments'));
     }
 
     // お気に入り機能

@@ -71,7 +71,7 @@ class User extends Authenticatable
     /* ユーザーのお気に入り商品 */
     public function myListProducts()
     {
-        return $this->belongsToMany(Product::class, 'likes')->withTimestamps();
+        return $this->belongsToMany(Product::class, 'likes', 'user_id', 'product_id');
     }
 
 }

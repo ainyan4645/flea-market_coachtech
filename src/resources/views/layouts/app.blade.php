@@ -15,8 +15,11 @@
             <img src="{{ asset('img/logo.svg') }}" alt="header-logo" class="header-logo_img">
         </a>
         @if (!isset($hideHeaderNav) || !$hideHeaderNav)
-        <form class="search-box" action="" method="">
-            <input class="search-box__keyword" type="text" name="keyword" value="なにをお探しですか？">
+        <form class="search-box" action="{{ route('item.index') }}" method="GET">
+            <input class="search-box__keyword" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
+            @if (request('tab'))
+                <input type="hidden" name="tab" value="{{ request('tab') }}">
+            @endif
         </form>
         <nav class="header-nav">
             <ul class="header-nav__inner">

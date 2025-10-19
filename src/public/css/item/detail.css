@@ -9,10 +9,7 @@
     box-sizing: border-box;
 }
 
-
-
 /*商品画像(画面左側)*/
-
 .item {
     padding: 35px 45px 0px;
     position: relative;
@@ -50,9 +47,7 @@
     text-align: center;
 }
 
-
 /*商品詳細(画面右側)*/
-
 .info {
     padding: 0px 55px 35px 65px;
     overflow-y: auto; /* 縦スクロール */
@@ -89,7 +84,6 @@
     border: none;
     cursor: pointer;
     width: 40px;
-    /* outline: none;      フォーカス時の青枠などを消す */
 }
 
 .reaction_like_icon,
@@ -183,10 +177,6 @@
     font-size: 36px;
     font-weight: bold;
     color: #5f5f5f;
-}
-
-.comment_item {
-
 }
 
 .comment_header {

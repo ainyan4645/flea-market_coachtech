@@ -8,13 +8,16 @@
 
 <main class="contents">
     <div class="tab__inner">
+        @php
+            $search = request('search'); // 現在の検索キーワード
+        @endphp
         <nav class="tabs">
         <!-- タブ_おすすめ -->
-        <a href="{{ url('/') }}" class="tab {{ request('tab', 'recommend') === 'recommend' ? 'active' : '' }}">
+        <a href="{{ route('item.index', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}" class="tab {{ request('tab', 'recommend') === 'recommend' ? 'active' : '' }}">
             おすすめ
         </a>
         @auth
-        <a href="{{ url('/?tab=mylist') }}" class="tab {{ request('tab') === 'mylist' ? 'active' : '' }}">
+        <a href="{{ route('item.index', ['tab' => 'mylist', 'keyword' => request('keyword')]) }}" class="tab {{ request('tab') === 'mylist' ? 'active' : '' }}">
             マイリスト
         </a>
         @endauth

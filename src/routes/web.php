@@ -18,7 +18,7 @@ use App\Http\Controllers\PurchaseController;
 */
 
 /* 商品一覧画面(TOP) */
-Route::get('/', [ItemController::class, 'index']);
+Route::get('/', [ItemController::class, 'index'])->name('item.index');
 
 /* 商品詳細画面 */
 Route::get('/item/{id}', [ItemController::class, 'detail'])->name('item.detail');

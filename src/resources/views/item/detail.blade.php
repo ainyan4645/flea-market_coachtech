@@ -30,7 +30,11 @@
                 <form action="{{ route('product.favorite', $product->id) }}" method="POST">
                     @csrf
                     <button type="submit" class="reaction_like_btn">
+                        @if ($isFavorite)
+                        <img  class="reaction_like_icon" src="{{ asset('img/星アイコン_yellow.png') }}" alt="お気に入り済み">
+                        @else
                         <img  class="reaction_like_icon" src="{{ asset('img/星アイコン.png') }}" alt="マイリストに追加">
+                        @endif
                     </button>
                 </form>
                 <span class="reaction_like_cnt">{{ $product->likes()->count() }}</span>
