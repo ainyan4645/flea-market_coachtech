@@ -13,6 +13,9 @@
             @else
                 <div class="no-image">NO IMAGE</div>
             @endif
+            @if ($product->is_sold)
+                <span class="sold-badge">Sold</span>
+            @endif
         </div>
     </section>
     <section class="info">
@@ -46,7 +49,11 @@
                 <span class="reaction_comment_cnt">{{ $comments->count() }}</span>
             </div>
         </div>
+        @if ($product->is_sold)
+            <span class="purchase sold">売り切れ</span>
+        @else
         <a href="{{ route('purchase.confirm', $product->id) }}" class="purchase">購入手続きへ</a>
+        @endif
         <div class="detail">
             <h3 class="detail_ttl">
                 商品説明

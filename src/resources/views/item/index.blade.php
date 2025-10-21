@@ -40,6 +40,9 @@
                         @else
                             <div class="no-image">NO IMAGE</div>
                         @endif
+                        @if ($product->is_sold)
+                            <span class="sold-badge">Sold</span>
+                        @endif
                     </div>
                     <p class="content__ttl">{{ $product->name }}</p>
                 </a>

@@ -67,6 +67,7 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;   /*はみ出し部分を非表示*/
     border-radius: 4px;
+    position: relative;
 }
 
 .content__img {
@@ -90,6 +91,21 @@
     font-weight: bold;
     text-align: center;
 }
+
+.sold-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    background-color: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    padding: 4px 40px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 10;
+}
+
 
 .content__ttl {
     font-size: 25px;

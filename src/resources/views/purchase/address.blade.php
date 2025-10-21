@@ -9,28 +9,27 @@
     <h1 class="contents_ttl">
         住所の変更
     </h1>
-    <form class="contents_update" action="">
+    <form class="contents_update" action="{{ route('purchase.address.update', ['id' => $product->id]) }}" method="POST">
+        @csrf
         <div class="postcode">
-            <h2 class="postcode_ttl">
-                郵便番号
-            </h2>
-            <input type="text" class="postcode_txt">
+            <h2 class="postcode_ttl">郵便番号</h2>
+            @error('postal_code')
+                <p class="error">{{ $message }}</p>
+            @enderror
+            <input type="text" class="postcode_txt" name="postal_code" value="{{ old('postal_code', $address['postal_code'] ?? '') }}">
         </div>
         <div class="address">
-            <h2 class="address_ttl">
-                住所
-            </h2>
-            <input type="text" class="address_txt">
+            <h2 class="address_ttl">住所</h2>
+            @error('address')
+                <p class="error">{{ $message }}</p>
+            @enderror
+            <input type="text" class="address_txt" name="address" value="{{ old('address', $address['address'] ?? '') }}">
         </div>
         <div class="building">
-            <h2 class="building_ttl">
-                建物名
-            </h2>
-            <input type="text" class="building_txt">
+            <h2 class="building_ttl">建物名</h2>
+            <input type="text" class="building_txt" name="building" value="{{ old('building', $address['building'] ?? '') }}">
         </div>
-        <button class="contents_update_btn">
-            更新する
-        </button>
+        <button type="submit" class="contents_update_btn">更新する</button>
     </form>
 </main>
 @endsection

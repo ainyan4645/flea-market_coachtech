@@ -39,6 +39,10 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth'])->group(function () {
     /* 商品購入画面 */
     Route::get('/purchase/{id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
+    Route::post('/purchase/payment_method/update/{id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
+    Route::get('/purchase/address/{id}', [PurchaseController::class, 'editAddress'])->name('purchase.address');
+    Route::post('/purchase/address/{id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
+    Route::post('/purchase/store', [PurchaseController::class, 'store'])->name('purchase.store');
 
     /* 住所変更ページ */
     Route::get('/purchase/address', function() {
@@ -55,7 +59,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mypage/profile', [MypageController::class, 'mypageEdit'])->name('mypage.edit');
     Route::post('mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
 
+    /* 商品詳細画面 */
     Route::post('/item/{id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
-
     Route::post('/item/{id}/comment', [ItemController::class, 'comment'])->name('item.comment');
 });

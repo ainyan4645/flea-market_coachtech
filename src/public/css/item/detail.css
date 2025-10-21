@@ -47,6 +47,20 @@
     text-align: center;
 }
 
+.sold-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    background-color: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    padding: 4px 80px;
+    font-size: 45px;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 10;
+}
+
 /*商品詳細(画面右側)*/
 .info {
     padding: 0px 55px 35px 65px;
@@ -99,6 +113,22 @@
     display: inline-block;
     width: 40px;
     text-align: center;
+}
+
+.purchase.sold {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    height: 55px;
+    width: 100%;
+    margin: 20px 0;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    background-color: #ccc;
+    color: #666;
+    text-decoration: none;
 }
 
 .purchase {
