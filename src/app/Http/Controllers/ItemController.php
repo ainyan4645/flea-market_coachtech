@@ -13,44 +13,44 @@ use Illuminate\Support\Facades\Auth;
 class ItemController extends Controller
 {
     public function index(Request $request)
-{
-    $tab = $request->query('tab', 'recommend'); // タブ判定
-    $keyword = $request->query('keyword');      // 検索キーワード取得
+    {
+        $tab = $request->query('tab', 'recommend'); // タブ判定
+        $keyword = $request->query('keyword');      // 検索キーワード取得
 
-    if ($tab === 'recommend') {
-        // おすすめ：全商品の中から検索
-        $query = Product::query();
+        if ($tab === 'recommend') {
+            // おすすめ：全商品の中から検索
+            $query = Product::query();
 
-        if ($keyword) {
-            $query->where('name', 'like', "%{$keyword}%");
+            if ($keyword) {
+                $query->where('name', 'like', "%{$keyword}%");
+            }
+
+            $products = $query->get();
+
+        } elseif ($tab === 'mylist' && auth()->check()) {
+            // お気に入り商品の中から検索
+            $user = auth()->user();
+
+            // ユーザーのお気に入り商品IDを取得
+            $myListIds = $user->myListProducts()->pluck('products.id');
+            // ↑ myListProducts リレーションが Product モデルを返す想定
+
+            $query = Product::whereIn('id', $myListIds);
+
+            if ($keyword) {
+                $query->where('name', 'like', "%{$keyword}%");
+            }
+
+            $products = $query->get();
+
+
+        } else {
+            // 未ログインでmylistを開いた場合など
+            $products = collect();
         }
 
-        $products = $query->get();
-
-    } elseif ($tab === 'mylist' && auth()->check()) {
-        // お気に入り商品の中から検索
-        $user = auth()->user();
-
-        // ユーザーのお気に入り商品IDを取得
-        $myListIds = $user->myListProducts()->pluck('products.id'); 
-        // ↑ myListProducts リレーションが Product モデルを返す想定
-
-        $query = Product::whereIn('id', $myListIds);
-
-        if ($keyword) {
-            $query->where('name', 'like', "%{$keyword}%");
-        }
-
-        $products = $query->get();
-
-
-    } else {
-        // 未ログインでmylistを開いた場合など
-        $products = collect();
+        return view('item.index', compact('products', 'tab'));
     }
-
-    return view('item.index', compact('products', 'tab'));
-}
 
 
     // 商品詳細表示

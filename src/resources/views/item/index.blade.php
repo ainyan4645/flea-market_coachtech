@@ -16,22 +16,15 @@
         <a href="{{ route('item.index', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}" class="tab {{ request('tab', 'recommend') === 'recommend' ? 'active' : '' }}">
             おすすめ
         </a>
-        @auth
         <a href="{{ route('item.index', ['tab' => 'mylist', 'keyword' => request('keyword')]) }}" class="tab {{ request('tab') === 'mylist' ? 'active' : '' }}">
             マイリスト
         </a>
-        @endauth
-        @guest
-        <a href="{{ route('login') }}" class="tab {{ request('tab') === 'mylist' ? 'active' : '' }}">
-            マイリスト
-        </a>
-        @endguest
         </nav>
     </div>
 
     <!-- 商品リスト部分 -->
     <ul class="content__list">
-        @forelse($products as $product)
+        @foreach($products as $product)
             <li class="content__card">
                 <a href="{{ route('item.detail', $product->id) }}" class="content__card__link">
                     <div class="content__img__inner">
@@ -47,9 +40,7 @@
                     <p class="content__ttl">{{ $product->name }}</p>
                 </a>
             </li>
-        @empty
-            <li class="content__card">お気に入り商品はありません</li>
-        @endforelse
+        @endforeach
     </ul>
 </main>
 @endsection

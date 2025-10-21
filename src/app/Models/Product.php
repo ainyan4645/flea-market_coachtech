@@ -42,24 +42,11 @@ class Product extends Model
     public function getImageUrlAttribute()
     {
         if (!$this->image_path) {
-            return null; // image_pathが空なら画像なし
+            return null;
         }
 
-        // ストレージにある場合
-        if (str_starts_with($this->image_path, 'public/')) {
-            $storagePath = str_replace('public/', 'storage/', $this->image_path);
-            if (file_exists(public_path($storagePath))) {
-                return asset($storagePath);
-            }
-        }
-
-        // public/img/products/ にある場合
-        if (file_exists(public_path($this->image_path))) {
-            return asset($this->image_path);
-        }
-
-        // どちらにもない場合はnull（＝画像なし）
-        return null;
+        // image_path は "storage/products/seeding/..."
+        return asset($this->image_path);
     }
 
     // 商品状態ラベルを返すアクセサ
