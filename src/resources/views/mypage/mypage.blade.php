@@ -19,7 +19,6 @@
     </div>
     <div class="tab__inner">
         <nav class="tabs">
-        <!-- タブ_おすすめ -->
         <a href="{{ url('/mypage?page=sell') }}" class="tab {{ request('page', 'sell') === 'sell' ? 'active' : '' }}">
             出品した商品
         </a>
@@ -30,60 +29,19 @@
     </div>
     <!-- 商品リスト部分 -->
     <ul class="content__list">
+        @foreach($products as $product)
             <li class="content__card">
-                <div class="content__img__inner">
-                    <img class="content__img" src="" alt="商品1">
-                </div>
-                <p class="content__ttl">商品_おすすめ</p>
+                <a href="{{ route('item.detail', $product->id) }}" class="content__card__link">
+                    <div class="content__img__inner">
+                        <img class="content__img" src="{{ $product->image_url }}" alt="{{ $product->name }}">
+                        @if ($product->is_sold)
+                            <span class="sold-badge">Sold</span>
+                        @endif
+                    </div>
+                    <p class="content__ttl">{{ $product->name }}</p>
+                </a>
             </li>
-            <li class="content__card">
-                <div class="content__img__inner">
-                    <img class="content__img" src="" alt="商品2">
-                </div>
-                <p class="content__ttl">商品_マイリスト</p>
-            </li>
-            <li class="content__card">
-                <div class="content__img__inner">
-                    <img src="" alt="商品2">
-                </div>
-                <p class="content__ttl">商品_マイリスト</p>
-            </li>
-            <li class="content__card">
-                <div class="content__img__inner">
-                    <img class="content__img" src="" alt="商品2">
-                </div>
-                <p class="content__ttl">商品_マイリスト</p>
-            </li>
-            <li class="content__card">
-                <div class="content__img__inner">
-                    <img class="content__img" src="" alt="商品2">
-                </div>
-                <p class="content__ttl">商品_マイリスト</p>
-            </li>
-            <li class="content__card">
-                <div class="content__img__inner">
-                    <img class="content__img" src="" alt="商品2">
-                </div>
-                <p class="content__ttl">商品_マイリスト</p>
-            </li>
-            <li class="content__card">
-                <div class="content__img__inner">
-                    <img class="content__img" src="" alt="商品1">
-                </div>
-                <p class="content__ttl">商品_おすすめ</p>
-            </li>
-            <li class="content__card">
-                <div class="content__img__inner">
-                    <img class="content__img" src="" alt="商品1">
-                </div>
-                <p class="content__ttl">商品_おすすめ</p>
-            </li>
-            <li class="content__card">
-                <div class="content__img__inner">
-                    <img class="content__img" src="" alt="商品1">
-                </div>
-                <p class="content__ttl">商品_おすすめ</p>
-            </li>
+        @endforeach
     </ul>
 </main>
 @endsection

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
+use App\Models\Order;
 
 class MypageController extends Controller
 {
@@ -32,7 +34,25 @@ class MypageController extends Controller
         return redirect('/');
     }
 
-    public function mypage() {
-        return view('mypage.mypage');
+    public function mypage(Request $request)
+    {
+        $user = Auth::user();
+
+        // クエリパラメータ page の値を取得（デフォルト：sell）
+        $page = $request->query('page', 'sell');
+
+        // タブごとの商品取得
+        if ($page === 'buy') {
+            // 購入した商品（Orderテーブルを使う場合）
+            $products = Product::whereIn('id', function($query) use ($user) {
+                $query->select('product_id') ->from('orders') ->where('user_id', $user->id);
+            })->get();
+        } else {
+            // 出品した商品
+            $products = Product::where('user_id', $user->id)->get();
+        }
+
+        // ビューへ渡す
+        return view('mypage.mypage', compact('user', 'products'));
     }
 }

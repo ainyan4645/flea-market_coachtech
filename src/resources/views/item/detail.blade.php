@@ -8,11 +8,7 @@
 <main class="content">
     <section class="item">
         <div class="item__inner">
-            @if ($product->image_url)
-                <img class="item__img" src="{{ $product->image_url }}" alt="{{ $product->name }}">
-            @else
-                <div class="no-image">NO IMAGE</div>
-            @endif
+            <img class="item__img" src="{{ $product->image_url }}" alt="{{ $product->name }}">
             @if ($product->is_sold)
                 <span class="sold-badge">Sold</span>
             @endif
