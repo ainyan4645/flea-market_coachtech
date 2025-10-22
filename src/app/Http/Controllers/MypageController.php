@@ -43,9 +43,9 @@ class MypageController extends Controller
 
         // タブごとの商品取得
         if ($page === 'buy') {
-            // 購入した商品（Orderテーブルを使う場合）
+            // 購入した商品
             $products = Product::whereIn('id', function($query) use ($user) {
-                $query->select('product_id') ->from('orders') ->where('user_id', $user->id);
+                $query->select('product_id') ->from('orders') ->where('buyer_id', $user->id);
             })->get();
         } else {
             // 出品した商品

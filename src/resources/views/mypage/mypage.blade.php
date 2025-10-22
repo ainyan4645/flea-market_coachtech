@@ -8,12 +8,12 @@
 <main>
     <div class="user">
     <div class="user_icon_inner">
-            <img src="" alt="" class="user_icon">
+            <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="プロフィール画像" class="user_icon">
         </div>
         <p class="user_name">
-            ユーザー名
+            {{ $user->name }}
         </p>
-        <a href="" class="user_edit_btn">
+        <a href="{{ route('mypage.edit') }}" class="user_edit_btn">
             プロフィールを編集
         </a>
     </div>
@@ -33,10 +33,7 @@
             <li class="content__card">
                 <a href="{{ route('item.detail', $product->id) }}" class="content__card__link">
                     <div class="content__img__inner">
-                        <img class="content__img" src="{{ $product->image_url }}" alt="{{ $product->name }}">
-                        @if ($product->is_sold)
-                            <span class="sold-badge">Sold</span>
-                        @endif
+                        <img class="content__img" src="{{ $product->image_path }}" alt="{{ $product->name }}">
                     </div>
                     <p class="content__ttl">{{ $product->name }}</p>
                 </a>
