@@ -6,30 +6,52 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
 use App\Models\Order;
 
 class MypageController extends Controller
 {
     public function mypageEdit() {
-        $profile = Profile::where('user_id', Auth::id())->first();
-        return view('mypage.mypage_edit', compact('profile'));
+        $user = auth()->user();
+        $profile = $user->profile;
+        $tempImage = session('temp_image');
+
+        return view('mypage.mypage_edit', compact('profile', 'tempImage'));
+    }
+
+    public function uploadTemp(Request $request) {
+        if ($request->hasFile('profile_image')) {
+            $path = $request->file('profile_image')->store('tmp', 'public');
+            session(['temp_image' => $path]);
+        }
+
+        return redirect()->route('mypage.edit');
     }
 
     public function update(ProfileRequest $request) {
-        $profile = Profile::firstOrNew(['user_id' => Auth::id()]);
+        $user = Auth::user();
+        $profile = Profile::firstOrNew(['user_id' => $user->id]);;
 
-        $profile->name = $request->name;
-        $profile->postal_code = $request->postal_code;
-        $profile->address = $request->address;
-        $profile->building = $request->building;
+        // 一時画像がある場合、本保存場所に移動
+        if (session()->has('temp_image')) {
+            $tempPath = session('temp_image');
+            $filename = basename($tempPath);
+            $newPath = 'profile_images/' . $filename;
 
-        if ($request->hasFile('profile_image')) {
-            $path = $request->file('profile_image')->store('profile_images', 'public');
-            $profile->profile_image = $path;
+            Storage::disk('public')->move($tempPath, $newPath);
+
+            $profile->profile_image = $newPath;
+            session()->forget('temp_image');
         }
 
+        // 各種プロフィール項目保存
+        $profile->fill($request->only(['postal_code', 'address', 'building']));
+        $profile->name = $request->input('name');
+        $user->name = $request->input('name', $user->name);
+
         $profile->save();
+        $user->save();
 
         return redirect('/');
     }

@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/purchase/address/{id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
     Route::post('/purchase/store', [PurchaseController::class, 'store'])->name('purchase.store');
 
-    /* 住所変更ページ */
+    /* 配送先住所変更ページ */
     Route::get('/purchase/address', function() {
         return view('purchase.address');
     });
@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     /* プロフィール編集画面 */
     Route::get('/mypage/profile', [MypageController::class, 'mypageEdit'])->name('mypage.edit');
+    Route::post('/mypage/profile/upload-temp', [MypageController::class, 'uploadTemp'])->name('mypage.upload.temp');
     Route::post('mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
 
     /* 商品詳細画面 */

@@ -28,7 +28,11 @@
 .img_display {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+}
+
+.mg_upload_inner {
+    display: flex;
 }
 
 .img_upload_btn {
