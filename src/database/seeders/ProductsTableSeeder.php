@@ -23,6 +23,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => 'Rolax',
                 'description' => 'スタイリッシュなデザインのメンズ腕時計',
                 'price' => 15000,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -32,6 +33,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => '西芝',
                 'description' => '高速で信頼性の高いハードディスク',
                 'price' => 5000,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -41,6 +43,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => 'なし',
                 'description' => '新鮮な玉ねぎ3束のセット',
                 'price' => 300,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -50,6 +53,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => '',
                 'description' => 'クラシックなデザインの革靴',
                 'price' => 4000,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -59,6 +63,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => '',
                 'description' => '高性能なノートパソコン',
                 'price' => 45000,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -68,6 +73,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => 'なし',
                 'description' => '高音質のレコーディング用マイク',
                 'price' => 8000,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -77,6 +83,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => '',
                 'description' => 'おしゃれなショルダーバッグ',
                 'price' => 3500,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -86,6 +93,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => 'なし',
                 'description' => '使いやすいタンブラー',
                 'price' => 500,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -95,6 +103,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => 'Starbacks',
                 'description' => '手動のコーヒーミル',
                 'price' => 4000,
+                'is_sold' => false,
             ],
             [
                 'user_id' => 1,
@@ -104,6 +113,7 @@ class ProductsTableSeeder extends Seeder
                 'brand' => '',
                 'description' => '便利なメイクアップセット',
                 'price' => 2500,
+                'is_sold' => true,
             ],
         ];
 

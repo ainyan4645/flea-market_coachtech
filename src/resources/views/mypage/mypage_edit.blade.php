@@ -10,13 +10,12 @@
         プロフィール設定
     </h1>
 
-    <form action="{{ route('mypage.upload.temp') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('mypage.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="img">
             <div class="img_inner">
-                @if(session('temp_image'))
-                    <img src="{{ asset('storage/' . session('temp_image')) }}" alt="一時画像" class="img_display">
-                @elseif($profile && $profile->profile_image)
+                @if($profile && $profile->profile_image)
                     <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="プロフィール画像" class="img_display">
                 @else
                     <img src="" alt="" class="img_display">
@@ -26,19 +25,11 @@
             <div class="img_upload_inner">
                 <label class="img_upload_btn">
                     画像を選択する
-                    <input type="file" class="img_upload_input" name="profile_image" accept="image/*" onchange="this.form.submit()">
+                    <input type="file" class="img_upload_input" name="profile_image" accept="image/*">
                 </label>
-                <span class="file_name">
-                    @if (session('temp_image'))
-                        {{ basename(session('temp_image')) }}
-                    @endif
-                </span>
             </div>
         </div>
-    </form>
 
-    <form action="{{ route('mypage.update') }}" method="POST">
-        @csrf
         <h2 class="name">ユーザー名</h2>
         @error('name')
         <div class="error">{{ $message }}</div>

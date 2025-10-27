@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ExhibitionRequest;
 use App\Http\Requests\CommentRequest;
 use App\Models\Product;
 use App\Models\Like;
 use App\Models\Comment;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\File;
 
 class ItemController extends Controller
 {
@@ -104,6 +108,30 @@ class ItemController extends Controller
 
     public function sell()
     {
-        return view('item.sell');
+        $tempImage =session('temp_product_image');
+        $categories = Category::all();
+
+        return view('item.sell', compact('tempImage', 'categories'));
+    }
+
+    public function store(ExhibitionRequest $request) {
+        // 画像保存
+        $path = $request->file('image_path')->store('products', 'public');
+
+        // DB保存
+        $product = Product::create([
+        'user_id' => auth()->id(),
+        'image_path' => $path,
+        'condition' => $request->condition,
+        'name' => $request->name,
+        'brand' => $request->brand,
+        'description' => $request->description,
+        'price' => $request->price,
+    ]);
+
+        // カテゴリ紐付け
+        $product->categories()->sync($request->input('categories'));
+
+        return redirect()->route('item.index');
     }
 }

@@ -51,14 +51,14 @@ Route::middleware(['auth'])->group(function () {
 
     /* 商品出品画面 */
     Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
+    Route::post('/sell/store', [ItemController::class, 'store'])->name('sell.store');
 
     /* プロフィール画面 */
     Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
 
     /* プロフィール編集画面 */
     Route::get('/mypage/profile', [MypageController::class, 'mypageEdit'])->name('mypage.edit');
-    Route::post('/mypage/profile/upload-temp', [MypageController::class, 'uploadTemp'])->name('mypage.upload.temp');
-    Route::post('mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
+    Route::put('mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
 
     /* 商品詳細画面 */
     Route::post('/item/{id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
