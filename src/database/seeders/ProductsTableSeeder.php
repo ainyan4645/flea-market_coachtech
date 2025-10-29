@@ -17,7 +17,7 @@ class ProductsTableSeeder extends Seeder
         $products = [
             [
                 'user_id' => 1,   // 出品テストユーザー
-                'image_path' => 'storage/products/seeding/ArmaniMensClock.jpg',
+                'image_path' => 'products/seeding/ArmaniMensClock.jpg',
                 'condition' => 1,   // 1:良好,2:目立った傷や汚れなし,3:やや傷や汚れあり,4:状態が悪い
                 'name' => '腕時計',
                 'brand' => 'Rolax',
@@ -27,7 +27,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/HDDHardDisk.jpg',
+                'image_path' => 'products/seeding/HDDHardDisk.jpg',
                 'condition' => 2,
                 'name' => 'HDD',
                 'brand' => '西芝',
@@ -37,7 +37,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/Onion.jpg',
+                'image_path' => 'products/seeding/Onion.jpg',
                 'condition' => 3,
                 'name' => '玉ねぎ3束',
                 'brand' => 'なし',
@@ -47,7 +47,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/LeatherShoes.jpg',
+                'image_path' => 'products/seeding/LeatherShoes.jpg',
                 'condition' => 4,
                 'name' => '革靴',
                 'brand' => '',
@@ -57,7 +57,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/notePC.jpg',
+                'image_path' => 'products/seeding/notePC.jpg',
                 'condition' => 1,
                 'name' => 'ノートPC',
                 'brand' => '',
@@ -67,7 +67,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/MusicMic.jpg',
+                'image_path' => 'products/seeding/MusicMic.jpg',
                 'condition' => 2,
                 'name' => 'マイク',
                 'brand' => 'なし',
@@ -77,7 +77,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/FashionBag.jpg',
+                'image_path' => 'products/seeding/FashionBag.jpg',
                 'condition' => 3,
                 'name' => 'ショルダーバッグ',
                 'brand' => '',
@@ -87,7 +87,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/TumblerSouvenir.jpg',
+                'image_path' => 'products/seeding/TumblerSouvenir.jpg',
                 'condition' => 4,
                 'name' => 'タンブラー',
                 'brand' => 'なし',
@@ -97,7 +97,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/CoffeeGrinder.jpg',
+                'image_path' => 'products/seeding/CoffeeGrinder.jpg',
                 'condition' => 1,
                 'name' => 'コーヒーミル',
                 'brand' => 'Starbacks',
@@ -107,7 +107,7 @@ class ProductsTableSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'image_path' => 'storage/products/seeding/MakeUpSet.jpg',
+                'image_path' => 'products/seeding/MakeUpSet.jpg',
                 'condition' => 2,
                 'name' => 'メイクセット',
                 'brand' => '',

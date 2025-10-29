@@ -33,7 +33,7 @@
             <li class="content__card">
                 <a href="{{ route('item.detail', $product->id) }}" class="content__card__link">
                     <div class="content__img__inner">
-                        <img class="content__img" src="{{ $product->image_path }}" alt="{{ $product->name }}">
+                        <img class="content__img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
                     </div>
                     <p class="content__ttl">{{ $product->name }}</p>
                 </a>

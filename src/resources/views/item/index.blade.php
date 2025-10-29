@@ -28,7 +28,7 @@
             <li class="content__card">
                 <a href="{{ route('item.detail', $product->id) }}" class="content__card__link">
                     <div class="content__img__inner">
-                        <img class="content__img" src="{{ $product->image_url }}" alt="{{ $product->name }}">
+                        <img class="content__img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
                         @if ($product->is_sold)
                             <span class="sold-badge">Sold</span>
                         @endif

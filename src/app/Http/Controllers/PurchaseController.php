@@ -49,7 +49,7 @@ class PurchaseController extends Controller
         ]);
     }
 
-    // 配送先編集ページ表示
+    // 配送先住所指定画面
     public function editAddress($id)
     {
         $product = Product::findOrFail($id);

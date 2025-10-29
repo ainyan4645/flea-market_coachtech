@@ -37,17 +37,18 @@ Route::middleware('guest')->group(function () {
 
 /** ログインユーザのみ **/
 Route::middleware(['auth'])->group(function () {
+    /* 商品詳細画面 */
+    Route::post('/item/{id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
+    Route::post('/item/{id}/comment', [ItemController::class, 'comment'])->name('item.comment');
+
     /* 商品購入画面 */
     Route::get('/purchase/{id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
     Route::post('/purchase/payment_method/update/{id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
-    Route::get('/purchase/address/{id}', [PurchaseController::class, 'editAddress'])->name('purchase.address');
-    Route::post('/purchase/address/{id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
     Route::post('/purchase/store', [PurchaseController::class, 'store'])->name('purchase.store');
 
-    /* 配送先住所変更ページ */
-    Route::get('/purchase/address', function() {
-        return view('purchase.address');
-    });
+    /* 住所変更ページ */
+    Route::get('/purchase/address/{id}', [PurchaseController::class, 'editAddress'])->name('purchase.address');
+    Route::post('/purchase/address/{id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
 
     /* 商品出品画面 */
     Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
@@ -59,8 +60,4 @@ Route::middleware(['auth'])->group(function () {
     /* プロフィール編集画面 */
     Route::get('/mypage/profile', [MypageController::class, 'mypageEdit'])->name('mypage.edit');
     Route::put('mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
-
-    /* 商品詳細画面 */
-    Route::post('/item/{id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
-    Route::post('/item/{id}/comment', [ItemController::class, 'comment'])->name('item.comment');
 });

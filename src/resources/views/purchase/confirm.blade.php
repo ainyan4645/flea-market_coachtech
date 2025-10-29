@@ -9,7 +9,7 @@
     <section class="option">
         <div class="item">
             <div class="item_img_inner">
-                <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="item_img">
+                <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="item_img">
             </div>
             <div class="item_detail">
                 <h1 class="item_detail_name">

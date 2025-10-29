@@ -8,7 +8,7 @@
 <main class="content">
     <section class="item">
         <div class="item__inner">
-            <img class="item__img" src="{{ $product->image_url }}" alt="{{ $product->name }}">
+            <img class="item__img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
             @if ($product->is_sold)
                 <span class="sold-badge">Sold</span>
             @endif

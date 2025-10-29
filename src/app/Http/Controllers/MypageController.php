@@ -8,7 +8,6 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
-use App\Models\Order;
 
 class MypageController extends Controller
 {

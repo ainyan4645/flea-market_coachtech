@@ -10,9 +10,6 @@ use App\Models\Like;
 use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\File;
 
 class ItemController extends Controller
 {
