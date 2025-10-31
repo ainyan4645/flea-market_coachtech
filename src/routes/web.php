@@ -59,5 +59,5 @@ Route::middleware(['auth'])->group(function () {
 
     /* プロフィール編集画面 */
     Route::get('/mypage/profile', [MypageController::class, 'mypageEdit'])->name('mypage.edit');
-    Route::put('mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
+    Route::put('/mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
 });
