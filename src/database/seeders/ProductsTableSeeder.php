@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 use App\Models\Product;
 
 class ProductsTableSeeder extends Seeder
@@ -14,9 +15,15 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::where('email', 'sell@example.com')->first();
+
+        if (!$user) {
+            return; // ユーザーが存在しない場合は何もしない
+        }
+
         $products = [
             [
-                'user_id' => 1,   // 出品テストユーザー
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/ArmaniMensClock.jpg',
                 'condition' => 1,   // 1:良好,2:目立った傷や汚れなし,3:やや傷や汚れあり,4:状態が悪い
                 'name' => '腕時計',
@@ -26,7 +33,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/HDDHardDisk.jpg',
                 'condition' => 2,
                 'name' => 'HDD',
@@ -36,7 +43,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/Onion.jpg',
                 'condition' => 3,
                 'name' => '玉ねぎ3束',
@@ -46,7 +53,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/LeatherShoes.jpg',
                 'condition' => 4,
                 'name' => '革靴',
@@ -56,7 +63,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/notePC.jpg',
                 'condition' => 1,
                 'name' => 'ノートPC',
@@ -66,7 +73,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/MusicMic.jpg',
                 'condition' => 2,
                 'name' => 'マイク',
@@ -76,7 +83,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/FashionBag.jpg',
                 'condition' => 3,
                 'name' => 'ショルダーバッグ',
@@ -86,7 +93,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/TumblerSouvenir.jpg',
                 'condition' => 4,
                 'name' => 'タンブラー',
@@ -96,7 +103,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/CoffeeGrinder.jpg',
                 'condition' => 1,
                 'name' => 'コーヒーミル',
@@ -106,7 +113,7 @@ class ProductsTableSeeder extends Seeder
                 'is_sold' => false,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'image_path' => 'products/seeding/MakeUpSet.jpg',
                 'condition' => 2,
                 'name' => 'メイクセット',

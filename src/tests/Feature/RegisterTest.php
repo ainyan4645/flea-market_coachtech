@@ -19,7 +19,7 @@ class RegisterTest extends TestCase
      * 名前が入力されていない場合、バリデーションメッセージが表示される
      */
     /** @test */
-    public function 名前が入力されていない場合、バリデーションメッセージが表示される()
+    public function testNameIsRequired()
     {
         // 会員登録ページを開く
         $this->get('/register')->assertStatus(200);
@@ -44,7 +44,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test */
-    public function メールアドレスが入力されていない場合、バリデーションメッセージが表示される()
+    public function testEmailIsRequired()
     {
         $this->get('/register')->assertStatus(200);
 
@@ -65,7 +65,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test */
-    public function パスワードが入力されていない場合、バリデーションメッセージが表示される()
+    public function testPasswordIsRequired()
     {
         $this->get('/register')->assertStatus(200);
 
@@ -86,7 +86,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test */
-    public function パスワードが7文字以下の場合、バリデーションメッセージが表示される()
+    public function testPasswordTooShort()
     {
         $this->get('/register')->assertStatus(200);
 
@@ -107,7 +107,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test */
-    public function パスワードが確認用パスワードと一致しない場合、バリデーションメッセージが表示される()
+    public function testPasswordConfirmationMismatch()
     {
         $this->get('/register')->assertStatus(200);
 
@@ -128,7 +128,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test */
-    public function 全ての項目が入力されている場合、会員情報が登録され、プロフィール設定画面に遷移される()
+    public function testRegistersSuccessfully()
     {
         $this->get('/register')->assertStatus(200);
 

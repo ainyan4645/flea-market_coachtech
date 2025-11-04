@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\ProductCategory;
 
 class ProductCategoryTableSeeder extends Seeder
@@ -14,20 +16,30 @@ class ProductCategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        // 商品数・カテゴリ数を想定
-        $productCount = 10;
-        $categoryCount = 14;
+        // 実際に存在するカテゴリIDを取得
+        $categoryIds = Category::pluck('id')->toArray();
+        // カテゴリが存在しない場合はスキップ
+        if (empty($categoryIds)) {
+            return;
+        }
 
-        for ($productId = 1; $productId <= $productCount; $productId++) {
+        // 実際に存在する全商品を取得
+        $products = Product::all();
+        // 商品がない場合は何もしない
+        if (Product::count() === 0) {
+        return;
+        }
+
+        foreach ($products as $product) {
             // 各商品に2〜3カテゴリをランダムで紐付け
-            $randomCategories = collect(range(1, $categoryCount))
+            $randomCategories = collect($categoryIds)
                 ->shuffle()
                 ->take(rand(2, 3))
                 ->toArray();
 
             foreach ($randomCategories as $categoryId) {
                 ProductCategory::create([
-                    'product_id' => $productId,
+                    'product_id' => $product->id,
                     'category_id' => $categoryId,
                 ]);
             }

@@ -22,6 +22,11 @@ class ItemController extends Controller
             // おすすめ：全商品の中から検索
             $query = Product::query();
 
+            // 🔽 自分が出品した商品を除外（ログイン時のみ）
+            if (Auth::check()) {
+                $query->where('user_id', '!=', Auth::id());
+            }
+
             if ($keyword) {
                 $query->where('name', 'like', "%{$keyword}%");
             }

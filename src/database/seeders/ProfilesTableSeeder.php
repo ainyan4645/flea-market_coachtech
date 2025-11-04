@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 use App\Models\Profile;
 
 class ProfilesTableSeeder extends Seeder
@@ -14,12 +15,17 @@ class ProfilesTableSeeder extends Seeder
      */
     public function run()
     {
-        Profile::create([
-            'user_id' => 1, // UsersTableSeederで作成したユーザーに紐付け
-            'name' => '出品テストユーザー',
-            'postal_code' => '1000001',
-            'address' => '東京都千代田区千代田1-1',
-            'building' => '皇居前ビル',
-        ]);
+        // UsersTableSeederで作成したユーザーを取得
+        $user = User::where('email', 'sell@example.com')->first();
+
+        if ($user) {
+            Profile::create([
+                'user_id' => $user->id,
+                'name' => '出品テストユーザー',
+                'postal_code' => '1000001',
+                'address' => '東京都千代田区千代田1-1',
+                'building' => '皇居前ビル',
+            ]);
+        }
     }
 }
