@@ -53,10 +53,10 @@ class Product extends Model
     public function getConditionLabelAttribute()
     {
         return match ($this->condition) {
-            1 => '良好',
-            2 => '目立った傷や汚れなし',
-            3 => 'やや傷や汚れあり',
-            4 => '状態が悪い',
+            'new' => '良好',
+            'good' => '目立った傷や汚れなし',
+            'used' => 'やや傷や汚れあり',
+            'bad' => '状態が悪い',
             default => '未設定',
         };
     }
