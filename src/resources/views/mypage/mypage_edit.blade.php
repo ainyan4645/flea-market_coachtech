@@ -34,7 +34,7 @@
         @error('name')
         <div class="error">{{ $message }}</div>
         @enderror
-        <input type="text" name="name" class="name_input" value="{{ old('name', $profile->name ?? auth()->user()->name ?? '') }}">
+        <input type="text" name="name" class="name_input" value="{{ old('name', auth()->user()->name ?? '') }}">
 
         <h2 class="post">郵便番号</h2>
         @error('postal_code')

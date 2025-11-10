@@ -17,7 +17,6 @@ class ProfileFactory extends Factory
         return [
             'user_id' => User::factory(), // 自動でユーザーも作成
             'profile_image' => 'default.png', // デフォルト画像
-            'name' => $this->faker->name,
             'postal_code' => $this->faker->numerify('###-####'),
             'address' => $this->faker->address,
             'building' => $this->faker->optional()->secondaryAddress(),

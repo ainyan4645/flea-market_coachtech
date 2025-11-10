@@ -36,7 +36,6 @@ class MypageController extends Controller
 
         // 各種プロフィール項目保存
         $profile->fill($request->only(['postal_code', 'address', 'building']));
-        $profile->name = $request->input('name');
         $user->name = $request->input('name', $user->name);
 
         $profile->save();

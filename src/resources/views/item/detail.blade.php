@@ -26,7 +26,7 @@
         </p>
         <div class="reaction">
             <div class="reaction_like">
-                <form action="{{ route('product.favorite', $product->id) }}" method="POST">
+                <form action="{{ route('product.favorite', ['item_id' => $product->id]) }}" method="POST">
                     @csrf
                     <button type="submit" class="reaction_like_btn">
                         @if ($isFavorite)
@@ -48,7 +48,7 @@
         @if ($product->is_sold)
             <span class="purchase sold">売り切れ</span>
         @else
-        <a href="{{ route('purchase.confirm', $product->id) }}" class="purchase">購入手続きへ</a>
+        <a href="{{ route('purchase.confirm', ['item_id' => $product->id]) }}" class="purchase">購入手続きへ</a>
         @endif
         <div class="detail">
             <h3 class="detail_ttl">
@@ -103,7 +103,7 @@
                 {{ $comment->body }}
             </p>
         @endforeach
-        <form action="{{ route('item.comment', $product->id) }}" method="POST">
+        <form action="{{ route('item.comment', ['item_id' => $product->id]) }}" method="POST">
             @csrf
             <h4 class="comment_input_ttl">
                 商品へのコメント

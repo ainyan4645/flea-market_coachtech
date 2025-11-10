@@ -9,7 +9,7 @@
     <h1 class="contents_ttl">
         住所の変更
     </h1>
-    <form class="contents_update" action="{{ route('purchase.address.update', ['id' => $product->id]) }}" method="POST">
+    <form class="contents_update" action="{{ route('purchase.address.update', ['item_id' => $product->id]) }}" method="POST">
         @csrf
         <div class="postcode">
             <h2 class="postcode_ttl">郵便番号</h2>

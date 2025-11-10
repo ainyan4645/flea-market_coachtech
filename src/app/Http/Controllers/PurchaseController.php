@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-    public function confirm($id, Request $request)
+    public function confirm($item_id, Request $request)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::findOrFail($item_id);
         $user = Auth::user()->load('profile');
 
         // セッションから一時住所を取得（なければprofileの情報）
@@ -39,20 +39,16 @@ class PurchaseController extends Controller
     }
 
     // 支払い方法選択時(一時保存)
-    public function updatePayment(Request $request, $id)
+    public function updatePayment(Request $request, $item_id)
     {
         session(['payment_method' => $request['payment_method']]);
-        return redirect()->route('purchase.confirm', [
-            'id'            => $id,
-            'edit_payment'  => false, // 編集モード終了
-            'edit_address' => request('edit_address') ?? false,
-        ]);
+        return redirect()->route('purchase.confirm', ['id' => $item_id]);
     }
 
     // 配送先住所指定画面
-    public function editAddress($id)
+    public function editAddress($item_id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::findOrFail($item_id);
         $user = Auth::user()->load('profile');
 
         $address = session('temp_address', [
@@ -65,7 +61,7 @@ class PurchaseController extends Controller
     }
 
     // 配送先住所更新
-    public function updateAddress(AddressRequest $request, $id)
+    public function updateAddress(AddressRequest $request, $item_id)
     {
         $tempAddress = [
             'postal_code' => $request->input('postal_code'),
@@ -76,7 +72,7 @@ class PurchaseController extends Controller
         session(['temp_address' => $tempAddress]);
 
         return redirect()->route('purchase.confirm', [
-        'id'           => $id,
+        'id'           => $item_id,
         'edit_payment' => request('edit_payment') ?? false,
     ]);
     }

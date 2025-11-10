@@ -57,6 +57,29 @@
     margin: 0px 35px 10px 35px;
 }
 
+.payment_select_buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.payment_btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.payment_btn.active {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+
+
 .dropdown {
   position: relative;
   width: 200px;

@@ -23,7 +23,7 @@
 
         <div class="payment">
             <h2 class="payment_ttl">支払い方法</h2>
-            <form action="{{ route('purchase.updatePayment', ['id' => $product->id]) }}" method="POST">
+            <form action="{{ route('purchase.updatePayment', ['item_id' => $product->id]) }}" method="POST">
                 @csrf
                 <select name="payment_method" onchange="this.form.submit()">
                     <option value="">選択してください</option>
@@ -41,7 +41,7 @@
                 <h2 class="address_setting_ttl">
                     配送先
                 </h2>
-                <a href="{{ route('purchase.address', ['id' => $product->id]) }}" class="address_setting_btn">
+                <a href="{{ route('purchase.address', ['item_id' => $product->id]) }}" class="address_setting_btn">
                     変更する
                 </a>
             </div>

@@ -60,9 +60,9 @@ class ItemController extends Controller
 
 
     // 商品詳細表示
-    public function detail($id)
+    public function detail($item_id)
     {
-        $product = Product::with('categories', 'likes', 'comments')->findOrFail($id);
+        $product = Product::with('categories', 'likes', 'comments')->findOrFail($item_id);
         $isFavorite = false;
         if (Auth::check()) {
             $isFavorite = $product->likes()->where('user_id', Auth::id())->exists();
@@ -72,13 +72,13 @@ class ItemController extends Controller
     }
 
     // お気に入り機能
-    public function favorite($id)
+    public function favorite($item_id)
     {
         $user = Auth::user();
 
         // すでにお気に入りに入っているかチェック
         $like = Like::where('user_id', $user->id)
-                    ->where('product_id', $id)
+                    ->where('product_id', $item_id)
                     ->first();
 
         if ($like) {
@@ -88,16 +88,16 @@ class ItemController extends Controller
             // まだなら追加
             Like::create([
                 'user_id' => $user->id,
-                'product_id' => $id,
+                'product_id' => $item_id,
             ]);
         }
 
         return back(); // 前のページにリダイレクト
     }
 
-    public function comment(CommentRequest $request, $id)
+    public function comment(CommentRequest $request, $item_id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::findOrFail($item_id);
 
         Comment::create([
             'user_id' => Auth::id(),

@@ -21,7 +21,7 @@ use App\Http\Controllers\PurchaseController;
 Route::get('/', [ItemController::class, 'index'])->name('item.index');
 
 /* 商品詳細画面 */
-Route::get('/item/{id}', [ItemController::class, 'detail'])->name('item.detail');
+Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('item.detail');
 
 
 /** ゲストユーザ **/
@@ -38,17 +38,17 @@ Route::middleware('guest')->group(function () {
 /** ログインユーザのみ **/
 Route::middleware(['auth'])->group(function () {
     /* 商品詳細画面 */
-    Route::post('/item/{id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
-    Route::post('/item/{id}/comment', [ItemController::class, 'comment'])->name('item.comment');
+    Route::post('/item/{item_id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
+    Route::post('/item/{item_id}/comment', [ItemController::class, 'comment'])->name('item.comment');
 
     /* 商品購入画面 */
-    Route::get('/purchase/{id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
-    Route::post('/purchase/payment_method/update/{id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
+    Route::post('/purchase/payment_method/update/{item_id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
     Route::post('/purchase/store', [PurchaseController::class, 'store'])->name('purchase.store');
 
     /* 住所変更ページ */
-    Route::get('/purchase/address/{id}', [PurchaseController::class, 'editAddress'])->name('purchase.address');
-    Route::post('/purchase/address/{id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address');
+    Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
 
     /* 商品出品画面 */
     Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
