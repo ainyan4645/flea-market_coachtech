@@ -25,7 +25,7 @@ class ItemIndexTest extends TestCase
         $this->seed(\Database\Seeders\DatabaseSeeder::class);
     }
 
-    /** @test */
+    // 全商品を取得できる
     public function testCanFetchAllItems()
     {
         // 商品一覧ページにアクセス
@@ -40,7 +40,7 @@ class ItemIndexTest extends TestCase
         }
     }
 
-    /** @test */
+    // 購入済み商品は「Sold」と表示される
     public function testSoldItemsShowSoldLabel()
     {
         // is_sold = true の商品を取得
@@ -55,7 +55,7 @@ class ItemIndexTest extends TestCase
         $response->assertSee('Sold');
     }
 
-    /** @test */
+    // 自分が出品した商品は表示されない
     public function testOwnItemsAreHidden()
     {
         // Seederで登録済みの「出品者ユーザー」を取得

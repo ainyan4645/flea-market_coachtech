@@ -16,7 +16,7 @@ class LoginTest extends TestCase
 
     use RefreshDatabase;
 
-    /** @test */
+    // メールアドレスが入力されていない場合、バリデーションメッセージが表示される
     public function testEmailIsRequired()
     {
         $this->get('/login')->assertStatus(200);
@@ -34,7 +34,7 @@ class LoginTest extends TestCase
         $response->assertSee('メールアドレスを入力してください');
     }
 
-    /** @test */
+    // パスワードが入力されていない場合、バリデーションメッセージが表示される
     public function testPasswordIsRequired()
     {
         $this->get('/login')->assertStatus(200);
@@ -52,7 +52,7 @@ class LoginTest extends TestCase
         $response->assertSee('パスワードを入力してください');
     }
 
-    /** @test */
+    // 入力情報が間違っている場合、バリデーションメッセージが表示される
     public function testInvalidCredentialsShowError()
     {
         $this->get('/login')->assertStatus(200);
@@ -70,7 +70,7 @@ class LoginTest extends TestCase
         $response->assertSee('ログイン情報が登録されていません');
     }
 
-    /** @test */
+    // 正しい情報が入力された場合、ログイン処理が実行される
     public function testLoginSucceedsWithValidCredentials()
     {
         $this->get('/login')->assertStatus(200);

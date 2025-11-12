@@ -36,10 +36,10 @@ class ShippingAddressTest extends TestCase
             'building'    => 'テストハイツ999',
         ];
 
-        $this->post(route('purchase.address.update', ['id' => $product->id]), $updatedAddress);
+        $this->post(route('purchase.address.update', ['item_id' => $product->id]), $updatedAddress);
 
         // --- 商品購入画面を再表示 ---
-        $response = $this->get(route('purchase.confirm', ['id' => $product->id]));
+        $response = $this->get(route('purchase.confirm', ['item_id' => $product->id]));
 
         // --- 表示内容確認 ---
         $response->assertStatus(200);
@@ -65,7 +65,7 @@ class ShippingAddressTest extends TestCase
             'building'    => 'テストビル5F',
         ];
 
-        $this->post(route('purchase.address.update', ['id' => $product->id]), $updatedAddress);
+        $this->post(route('purchase.address.update', ['item_id' => $product->id]), $updatedAddress);
 
         // --- 購入 ---
         $response = $this->post(route('purchase.store'), [
