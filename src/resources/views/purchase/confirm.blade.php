@@ -25,7 +25,7 @@
             <h2 class="payment_ttl">支払い方法</h2>
             <form action="{{ route('purchase.updatePayment', ['item_id' => $product->id]) }}" method="POST">
                 @csrf
-                <select name="payment_method" onchange="this.form.submit()">
+                <select name="payment_method" class="payment_method" onchange="this.form.submit()">
                     <option value="">選択してください</option>
                     <option value="convenience" {{ $paymentMethod === 'convenience' ? 'selected' : '' }}>コンビニ支払い</option>
                     <option value="credit" {{ $paymentMethod === 'credit' ? 'selected' : '' }}>カード支払い</option>

@@ -42,7 +42,11 @@ class PurchaseController extends Controller
     public function updatePayment(Request $request, $item_id)
     {
         session(['payment_method' => $request['payment_method']]);
-        return redirect()->route('purchase.confirm', ['id' => $item_id]);
+        return redirect()->route('purchase.confirm', [
+            'item_id'            => $item_id,
+            'edit_payment'  => false, // 編集モード終了
+            'edit_address' => request('edit_address') ?? false,
+        ]);
     }
 
     // 配送先住所指定画面
