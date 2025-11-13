@@ -7,8 +7,8 @@
 @section('content')
 <main class="content">
     <section class="item">
-        <div class="item__inner">
-            <img class="item__img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
+        <div class="item-inner">
+            <img class="item-img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
             @if ($product->is_sold)
                 <span class="sold-badge">Sold</span>
             @endif
@@ -25,94 +25,94 @@
             ¥{{ number_format($product->price) }} (税込)
         </p>
         <div class="reaction">
-            <div class="reaction_like">
+            <div class="reaction-like">
                 <form action="{{ route('product.favorite', ['item_id' => $product->id]) }}" method="POST">
                     @csrf
-                    <button type="submit" class="reaction_like_btn">
+                    <button type="submit" class="reaction-like-btn">
                         @if ($isFavorite)
-                        <img  class="reaction_like_icon" src="{{ asset('img/星アイコン_yellow.png') }}" alt="お気に入り済み">
+                        <img  class="reaction-like-icon" src="{{ asset('img/星アイコン_yellow.png') }}" alt="お気に入り済み">
                         @else
-                        <img  class="reaction_like_icon" src="{{ asset('img/星アイコン.png') }}" alt="マイリストに追加">
+                        <img  class="reaction-like-icon" src="{{ asset('img/星アイコン.png') }}" alt="マイリストに追加">
                         @endif
                     </button>
                 </form>
-                <span class="reaction_like_cnt">{{ $product->likes()->count() }}</span>
+                <span class="reaction-like-cnt">{{ $product->likes()->count() }}</span>
             </div>
-            <div class="reaction_comment">
-                <div class="reaction_comment_btn">
-                    <img class="reaction_comment_icon" src="{{ asset('img/ふきだしアイコン.png') }}" alt="コメント追加">
+            <div class="reaction-comment">
+                <div class="reaction-comment-btn">
+                    <img class="reaction-comment-icon" src="{{ asset('img/ふきだしアイコン.png') }}" alt="コメント追加">
                 </div>
-                <span class="reaction_comment_cnt">{{ $comments->count() }}</span>
+                <span class="reaction-comment-cnt">{{ $comments->count() }}</span>
             </div>
         </div>
         @if ($product->is_sold)
-            <span class="purchase sold">売り切れ</span>
+            <span class="purchase-sold">売り切れ</span>
         @else
         <a href="{{ route('purchase.confirm', ['item_id' => $product->id]) }}" class="purchase">購入手続きへ</a>
         @endif
         <div class="detail">
-            <h3 class="detail_ttl">
+            <h3 class="detail-ttl">
                 商品説明
             </h3>
-            <p class="detail_txt">
+            <p class="detail-txt">
                 {{ $product->description }}
             </p>
         </div>
         <div class="type">
-            <h3 class="type_ttl">
+            <h3 class="type-ttl">
                 商品の情報
             </h3>
-            <div class="type_list">
-                <h4 class="type_category">
+            <div class="type-list">
+                <h4 class="type-category">
                 カテゴリー
                 </h4>
-                <ul class="type_category_inner">
+                <ul class="type-category-inner">
                     @forelse($product->categories as $category)
-                    <li class="type_category_item">
+                    <li class="type-category-item">
                         {{ $category->name }}
                     </li>
                     @empty
-                    <li class="type_category_item">
+                    <li class="type-category-item">
                         未設定
                     </li>
                     @endforelse
                 </ul>
             </div>
-            <div class="type_list">
-                <h4 class="type_condition">
+            <div class="type-list">
+                <h4 class="type-condition">
                     商品の状態
                 </h4>
-                <p class="type_condition_item">
+                <p class="type-condition-item">
                     {{ $product->condition_label }}
                 </p>
             </div>
         </div>
-        <h3 class="comment_ttl">
+        <h3 class="comment-ttl">
             コメント({{ $product->comments()->count() }})
         </h3>
         @foreach($product->comments as $comment)
-            <div class="comment_header">
-                <div class="comment_icon_inner">
-                    <img class="comment_icon" src="{{ $comment->user->icon ?? '' }}" alt="{{ $comment->user->name }}">
+            <div class="comment-header">
+                <div class="comment-icon-inner">
+                    <img class="comment-icon" src="{{ $comment->user->icon ?? '' }}" alt="{{ $comment->user->name }}">
                 </div>
-                <span class="comment_user">
+                <span class="comment-user">
                     {{ $comment->user->name ?? '匿名ユーザー' }}
                 </span>
             </div>
-            <p class="comment_body">
+            <p class="comment-body">
                 {{ $comment->body }}
             </p>
         @endforeach
         <form action="{{ route('item.comment', ['item_id' => $product->id]) }}" method="POST">
             @csrf
-            <h4 class="comment_input_ttl">
+            <h4 class="comment-input-ttl">
                 商品へのコメント
             </h4>
             @error('body')
                 <div class="error">{{ $message }}</div>
             @enderror
-            <textarea name="body" class="comment_input_txt">{{ old('body') }}</textarea>
-            <button class="comment_input_btn" type="submit">
+            <textarea name="body" class="comment-input-txt">{{ old('body') }}</textarea>
+            <button class="comment-input-btn" type="submit">
                 コメントを送信する
             </button>
         </form>

@@ -7,7 +7,7 @@
 @section('content')
 
 <main class="contents">
-    <div class="tab__inner">
+    <div class="tab-inner">
         @php
             $search = request('search'); // 現在の検索キーワード
         @endphp
@@ -23,17 +23,17 @@
     </div>
 
     <!-- 商品リスト部分 -->
-    <ul class="content__list">
+    <ul class="content-list">
         @foreach($products as $product)
-            <li class="content__card">
-                <a href="{{ route('item.detail', $product->id) }}" class="content__card__link">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
+            <li class="content-card">
+                <a href="{{ route('item.detail', $product->id) }}" class="content-card-link">
+                    <div class="content-img-inner">
+                        <img class="content-img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
                         @if ($product->is_sold)
                             <span class="sold-badge">Sold</span>
                         @endif
                     </div>
-                    <p class="content__ttl">{{ $product->name }}</p>
+                    <p class="content-ttl">{{ $product->name }}</p>
                 </a>
             </li>
         @endforeach

@@ -15,7 +15,7 @@
     position: relative;
 }
 
-.item__inner {
+.item-inner {
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;   /*はみ出し部分を非表示*/
@@ -25,7 +25,7 @@
     top: 210px;
 }
 
-.item__img {
+.item-img {
     width: 100%;
     height: 100%;
     object-fit: contain;  /*全体表示*/
@@ -91,8 +91,8 @@
     gap: 65px;
 }
 
-.reaction_like_btn,
-.reaction_comment_btn {
+.reaction-like-btn,
+.reaction-comment-btn {
     padding: 0;
     background: none;
     border: none;
@@ -100,14 +100,14 @@
     width: 40px;
 }
 
-.reaction_like_icon,
-.reaction_comment_icon {
+.reaction-like-icon,
+.reaction-comment-icon {
     width: 100%;
     margin-bottom: 5px;
 }
 
-.reaction_like_cnt,
-.reaction_comment_cnt {
+.reaction-like-cnt,
+.reaction-comment-cnt {
     font-size: 18px;
     font-weight: bold;
     display: inline-block;
@@ -115,7 +115,7 @@
     text-align: center;
 }
 
-.purchase.sold {
+.purchase-sold {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,23 +147,23 @@
     color: #ffffff;
 }
 
-.detail_ttl,
-.type_ttl {
+.detail-ttl,
+.type-ttl {
     font-size: 36px;
     font-weight: bold;
 }
 
-.detail_txt {
+.detail-txt {
     font-size: 24px;
     line-height: 200%;
 }
 
-.type_list {
+.type-list {
     display: flex;
 }
 
-.type_category,
-.type_condition {
+.type-category,
+.type-condition {
     font-size: 24px;
     font-weight: bold;
     width: 135px;
@@ -171,7 +171,7 @@
     margin: 0px 60px 0px 0px;
 }
 
-.type_category_inner {
+.type-category-inner {
     display: flex;
     flex-wrap: wrap;
     flex: 1;
@@ -181,7 +181,7 @@
     list-style: none;
 }
 
-.type_category_item {
+.type-category-item {
     font-size: 20px;
     background-color: #D9D9D9;
     border-radius: 15px;
@@ -191,29 +191,29 @@
     text-align: center;
 }
 
-.type_condition {
+.type-condition {
     display: flex;
     align-items: center;
     height: 100px;
 }
 
-.type_condition_item {
+.type-condition-item {
     font-size: 20px;
     display: flex;
     align-items: center;
 }
 
-.comment_ttl {
+.comment-ttl {
     font-size: 36px;
     font-weight: bold;
     color: #5f5f5f;
 }
 
-.comment_header {
+.comment-header {
     display: flex;
 }
 
-.comment_icon_inner {
+.comment-icon-inner {
     background-color: #d9d9d9;
     width: 70px;
     aspect-ratio: 1 / 1;
@@ -222,13 +222,13 @@
     margin-bottom: 20px;
 }
 
-.comment_icon {
+.comment-icon {
     width: 100%;
     height: 100%;
     object-fit: cover;  /*枠いっぱい表示＆枠外切り取り*/
 }
 
-.comment_user {
+.comment-user {
     font-size: 30px;
     font-weight: bold;
     height: 70px;
@@ -237,7 +237,7 @@
     align-items: center;
 }
 
-.comment_body {
+.comment-body {
     height: 70px;
     background-color: #d9d9d9;
     font-size: 20px;
@@ -248,14 +248,14 @@
     margin-bottom: 40px;
 }
 
-.comment_input_ttl {
+.comment-input-ttl {
     font-size: 28px;
     font-weight: bold;
     height: 50px;
     margin: 0;
 }
 
-.comment_input_txt {
+.comment-input-txt {
     font-size: 20px;
     height: 245px;
     width: 100%;
@@ -263,7 +263,7 @@
     margin-bottom: 50px;
 }
 
-.comment_input_btn {
+.comment-input-btn {
     font-size: 25px;
     font-weight: bold;
     height: 55px;

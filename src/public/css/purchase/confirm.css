@@ -22,7 +22,7 @@
     display: flex;
 }
 
-.item_img_inner {
+.item-img-inner {
     width: 175px;
     aspect-ratio: 1 / 1;
     overflow: hidden;
@@ -30,25 +30,25 @@
     background-color: #d9d9d9;
 }
 
-.item_img {
+.item-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.item_detail {
+.item-detail {
     width: 570px;
 }
 
-.item_detail_name,
-.item_detail_price {
+.item-detail-name,
+.item-detail-price {
     font-size: 30px;
     font-weight: bold;
     margin-top: 0;
 }
 
-.payment_ttl,
-.address_setting_ttl {
+.payment-ttl,
+.address-setting-ttl {
     font-size: 20px;
     font-weight: bold;
     height: 85px;
@@ -57,7 +57,7 @@
     margin: 0px 35px 10px 35px;
 }
 
-.payment_method {
+.payment-method {
     width: 265px;
     height: 30px;
     font-size: 16px;
@@ -76,12 +76,12 @@
     cursor: pointer;
 }
 
-.address_setting {
+.address-setting {
     display: flex;
     justify-content: space-between;
 }
 
-.address_setting_btn {
+.address-setting-btn {
     font-size: 20px;
     height: 85px;
     width: 115px;
@@ -94,13 +94,13 @@
     margin: 0px 35px 10px 35px;
 }
 
-.address_postcode {
+.address-postcode {
     font-size: 20px;
     font-weight: bold;
     margin: 0px 95px;
 }
 
-.address_detail {
+.address-detail {
     font-size: 20px;
     font-weight: bold;
     margin: 10px 35px 60px 95px;
@@ -112,29 +112,29 @@
     margin-top: 95px;
 }
 
-.confirm_inner {
+.confirm-inner {
     border: 1px solid #000000;
 }
 
-.confirm_price {
+.confirm-price {
     border-bottom: 1px solid #000000;
 }
 
-.confirm_price,
-.confirm_payment {
+.confirm-price,
+.confirm-payment {
     display: flex;
     width: 440px;
     height: 115px;
     align-items: center;
 }
 
-.confirm_ttl {
+.confirm-ttl {
     font-size: 20px;
     width: 50%;
     text-align: center;
 }
 
-.confirm_option {
+.confirm-option {
     font-size: 24px;
     width: 50%;
     text-align: center;
@@ -146,7 +146,7 @@
     appearance: none;          /* 標準 */
 }
 
-.confirm_purchase {
+.confirm-purchase {
     width: 440px;
     height: 60px;
     background-color: #ff5555;
