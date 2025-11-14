@@ -7,17 +7,17 @@
 @section('content')
 <main>
     <div class="user">
-    <div class="user_icon_inner">
-            <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="プロフィール画像" class="user_icon">
+    <div class="user-icon-inner">
+            <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="プロフィール画像" class="user-icon">
         </div>
-        <p class="user_name">
+        <p class="user-name">
             {{ $user->name }}
         </p>
-        <a href="{{ route('mypage.edit') }}" class="user_edit_btn">
+        <a href="{{ route('mypage.edit') }}" class="user-edit-btn">
             プロフィールを編集
         </a>
     </div>
-    <div class="tab__inner">
+    <div class="tab-inner">
         <nav class="tabs">
         <a href="{{ url('/mypage?page=sell') }}" class="tab {{ request('page', 'sell') === 'sell' ? 'active' : '' }}">
             出品した商品
@@ -28,14 +28,14 @@
         </nav>
     </div>
     <!-- 商品リスト部分 -->
-    <ul class="content__list">
+    <ul class="content-list">
         @foreach($products as $product)
-            <li class="content__card">
-                <a href="{{ route('item.detail', $product->id) }}" class="content__card__link">
-                    <div class="content__img__inner">
-                        <img class="content__img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
+            <li class="content-card">
+                <a href="{{ route('item.detail', $product->id) }}" class="content-card-link">
+                    <div class="content-img-inner">
+                        <img class="content-img" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
                     </div>
-                    <p class="content__ttl">{{ $product->name }}</p>
+                    <p class="content-ttl">{{ $product->name }}</p>
                 </a>
             </li>
         @endforeach

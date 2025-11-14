@@ -3,7 +3,7 @@
     margin: 0px auto 50px;
 }
 
-.contents_ttl {
+.contents-ttl {
     display: flex;
     justify-content: center;
     margin: 140px auto 45px;
@@ -16,7 +16,7 @@
     margin-bottom: 75px;
 }
 
-.img_inner {
+.img-inner {
     width: 150px;
     aspect-ratio: 1 / 1;
     background-color: #d9d9d9;
@@ -25,17 +25,17 @@
     margin-right: 40px;
 }
 
-.img_display {
+.img-display {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.mg_upload_inner {
+.mg-upload-inner {
     display: flex;
 }
 
-.img_upload_btn {
+.img-upload-btn {
     width: 180px;
     height: 50px;
     border: 2px solid #ff5555;
@@ -49,7 +49,7 @@
     cursor: pointer;
 }
 
-.img_upload_input {
+.img-upload-input {
     display: none;
 }
 
@@ -61,27 +61,27 @@
     margin: 0;
 }
 
-.name_input,
-.post_input,
-.address_input,
-.building_input {
+.name-input,
+.post-input,
+.address-input,
+.building-input {
     width: 100%;
     height: 55px;
     padding-left: 15px;
     font-size: 24px;
 }
 
-.name_input,
-.building_input {
+.name-input,
+.building-input {
     margin-bottom: 65px;
 }
 
-.post_input,
-.address_input {
+.post-input,
+.address-input {
     margin-bottom: 45px;
 }
 
-.edit_btn {
+.edit-btn {
     width: 100%;
     height: 60px;
     background-color: #ff5555;
