@@ -28,16 +28,17 @@
 - nginx 1.24
 
 ## ER図
+![ER図](./flea-market_ER.drawio.svg)
 
-## URL
+## 開発環境(URL)
 - 商品一覧画面(トップ)： http://localhost/
 - phpMyAdmin： http://localhost:8080/
 
-## 機能確認ユーザ
-- サンプル商品出品ユーザ
-メール： sell@example.com
+## 機能確認用ユーザ
+- サンプル商品出品ユーザ<br>
+メール： sell@example.com<br>
 パスワード： password
 
-- 認証必須機能確認用ユーザ
-メール： testA@example.com
+- 認証必須機能確認用ユーザ<br>
+メール： testA@example.com<br>
 パスワード： password
