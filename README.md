@@ -9,12 +9,14 @@
 ### Laravel環境構築
 1. cd src
 2. cp .env.example .env
-3. docker-compose exec php bash
-4. composer install
-5. php artisan key:generate
-6. php artisan migrate
-7. php artisan db:seed
-8. php artisan storage:link
+3. .env.testingは？？？？？？？？？？？？？？？
+4. docker-compose exec php bash
+5. composer install
+6. php artisan key:generate
+7. php artisan migrate
+8. php artisan db:seed
+9. php artisan storage:link
+10. composer require stripe/stripe-php
 
  ※permissionエラーが出る場合は `/contact-form__test` ディレクトリで以下のコマンドを実行してください。
  ```bash
@@ -42,3 +44,7 @@
 - 認証必須機能確認用ユーザ<br>
 メール： testA@example.com<br>
 パスワード： password
+
+## 補足事項
+- 画像アップロード時の画面に即時反映はJavaScriptを使用しないと難しいため、アップロード時は何も表示されません。フォーム送信後に画像が反映されているかのご確認をお願いいたします。
+- stripe決済はまだ開発段階のため、現段階ではカード決済完了時にのみ購入完了します。

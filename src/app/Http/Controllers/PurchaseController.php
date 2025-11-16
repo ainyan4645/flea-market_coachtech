@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 class PurchaseController extends Controller
 {
@@ -81,26 +83,48 @@ class PurchaseController extends Controller
     ]);
     }
 
-    public function store(PurchaseRequest $request)
+    // 決済画面へ
+    public function checkout(PurchaseRequest $request, $item_id)
     {
+        $validated = $request->validated();
+        $product = Product::findOrFail($item_id);
+
+        // 先に注文登録
         Order::create([
-            'buyer_id'       => $request->buyer_id,
-            'product_id'     => $request->product_id,
-            'payment_method' => $request->payment_method,
-            'postal_code'    => $request->postal_code,
-            'address'        => $request->address,
-            'building'       => $request->building,
+            'buyer_id'       => auth()->id(),
+            'product_id'     => $item_id,
+            'payment_method' => $validated['payment_method'],
+            'postal_code'    => $validated['postal_code'],
+            'address'        => $validated['address'],
+            'building'       => $validated['building'] ?? null,
         ]);
 
-        // 商品のis_soldをtrueに更新
-        $product = Product::find($request->product_id);
-        if ($product) {
-            $product->is_sold = true;
-            $product->save();
-        }
+        $product->update(['is_sold' => true]);
 
-        // 登録後にセッション削除
-        session()->forget(['temp_address', 'payment_method']);
-        return redirect('/');
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+
+        // 購入画面で選択した支払い方法に応じて決済手段を指定
+        $paymentTypes = match($validated['payment_method']) {
+            'credit'      => ['card'],
+            'convenience' => ['konbini'],
+            default       => ['card'],    // 安全対策
+        };
+
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => $paymentTypes,
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => ['name' => $product->name],
+                    'unit_amount' => $product->price,
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => url('/'), // 今回は success は未対応
+            'cancel_url'  => url('/'), // 今回は cancel は未対応
+        ]);
+
+        return redirect($session->url);
     }
 }

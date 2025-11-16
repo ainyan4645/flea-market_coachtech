@@ -74,7 +74,7 @@
                 <input class="confirm-option" value="{{ $paymentMethod === 'convenience' ? 'コンビニ支払い' : ($paymentMethod === 'credit' ? 'カード支払い' : '未選択') }}" readonly>
             </div>
         </div>
-        <form action="{{ route('purchase.store') }}" method="POST">
+        <form action="{{ route('purchase.checkout', $product->id) }}" method="POST" target="_blank">
             @csrf
             {{-- hidden --}}
             <input type="hidden" name="buyer_id" value="{{ $user->id }}">

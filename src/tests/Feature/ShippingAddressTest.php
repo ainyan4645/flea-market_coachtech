@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Profile;
-use App\Models\Order;
 use Tests\TestCase;
 
 class ShippingAddressTest extends TestCase

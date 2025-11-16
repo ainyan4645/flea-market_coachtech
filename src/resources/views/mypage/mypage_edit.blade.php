@@ -15,7 +15,7 @@
         @method('PUT')
         <div class="img">
             <div class="img-inner">
-                <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="" class="img-display">
+                <img src="{{ $profile && $profile->profile_image ? asset('storage/' . $profile->profile_image) : '' }}" alt="" class="img-display">
             </div>
 
             <div class="img-upload-inner">

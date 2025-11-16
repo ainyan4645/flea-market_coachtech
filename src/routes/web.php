@@ -44,7 +44,9 @@ Route::middleware(['auth'])->group(function () {
     /* 商品購入画面 */
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
     Route::post('/purchase/payment_method/update/{item_id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
-    Route::post('/purchase/store', [PurchaseController::class, 'store'])->name('purchase.store');
+
+    /* 決済画面 */
+    Route::post('/purchase/checkout/{item_id}', [PurchaseController::class, 'checkout'])->name('purchase.checkout');
 
     /* 住所変更ページ */
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address');

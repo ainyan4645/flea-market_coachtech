@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\Comment;
 use Tests\TestCase;
 
 class CommentTest extends TestCase
