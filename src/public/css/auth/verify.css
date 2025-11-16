@@ -4,12 +4,10 @@
     min-height: calc(100vh - 60px); /* ヘッダー高さ分を引く */
 }
 
-/* ボックス */
 .verify-box {
     text-align: center;
 }
 
-/* テキスト */
 .verify-text {
     font-size: 24px;
     font-weight: bold;
@@ -24,7 +22,6 @@
     margin-bottom: 50px;
 }
 
-/* ワンクリック認証ボタン */
 .verify-btn {
     width: 255px;
     height: 100%;
@@ -37,7 +34,6 @@
     cursor: pointer;
 }
 
-/* 再送リンク風ボタン */
 .resend-link {
     background: none;
     border: none;

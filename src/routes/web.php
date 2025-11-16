@@ -72,9 +72,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 /** メール認証関連 **/
 Route::middleware('auth')->group(function () {
     // 認証メール誘導画面
-    Route::get('/email/verify', function () {
-        return view('auth.verify');
-    })->name('verification.notice');
+    Route::get('/email/verify', [VerificationController::class, 'notice'])
+        ->middleware('auth')
+        ->name('verification.notice');
+
+    // メール認証リンク（メール内URL用）
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'autoVerify'])
+        ->middleware(['auth', 'signed'])
+        ->name('verification.verify');
 
     // ボタン押下で自動認証
     Route::post('/email/verify/auto', [VerificationController::class, 'autoVerify'])
@@ -85,8 +90,3 @@ Route::middleware('auth')->group(function () {
         ->middleware('throttle:6,1')
         ->name('verification.send');
 });
-
-// メールリンククリック時（認証完了）
-Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
-    ->middleware(['auth', 'signed'])
-    ->name('verification.verify');

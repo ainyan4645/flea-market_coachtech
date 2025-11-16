@@ -55,6 +55,11 @@ STRIPE_SECRET=sk_test_xxxxxx
 メール： testA@example.com<br>
 パスワード： password
 
+## テストケース
+```
+php artisan test --filter=PaymentMethodTest
+```
+
 ## 補足事項
 - 画像アップロード時の画面に即時反映はJavaScriptを使用しないと難しいため、アップロード時は何も表示されません。フォーム送信後に画像が反映されているかのご確認をお願いいたします。
 - stripe決済はまだ開発段階のため、現段階では「購入する」ボタン押下で先に購入完了し、決済画面に遷移する仕様です。(決済完了画面未作成)
