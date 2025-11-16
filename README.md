@@ -13,19 +13,20 @@
 4. docker-compose exec php bash
 5. composer install
 6. php artisan key:generate
-7. php artisan migrate
-8. php artisan db:seed
-9. php artisan storage:link
-10. composer require stripe/stripe-php
-11. Stripeアカウントを作成 [https://stripe.com/jp](https://stripe.com/jp)
-12. stripeのテストモードで「開発者 > APIキー」を選択
-13. 公開可能キーとシークレットキーをコピー
-14. `.env`と`.env.testing`の`STRIPE_KEY` / `STRIPE_SECRET」`に貼り付け
+7. php artisan key:generate --env=testing
+8. php artisan migrate
+9. php artisan db:seed
+10. php artisan storage:link
+11. composer require stripe/stripe-php
+12. Stripeアカウントを作成 [https://stripe.com/jp](https://stripe.com/jp)
+13. stripeのテストモードで「開発者 > APIキー」を選択
+14. 公開可能キーとシークレットキーをコピー
+15. `.env`と`.env.testing`の`STRIPE_KEY` / `STRIPE_SECRET」`に貼り付け
 ```
 STRIPE_KEY=pk_test_xxxxxx
 STRIPE_SECRET=sk_test_xxxxxx
 ```
-15. php artisan config:clear
+1.  php artisan config:clear
 
  ※permissionエラーが出る場合は `/flea-market_coachtech` ディレクトリで以下のコマンドを実行してください。
  ```bash
@@ -56,11 +57,25 @@ STRIPE_SECRET=sk_test_xxxxxx
 パスワード： password
 
 ## テストケース
+以下のコマンドでテスト実行ができます。<br>
+（テストファイル名はスプレッドシートからも参照できます。）
+
+- 全てのテストを一括実行
 ```
-php artisan test --filter=PaymentMethodTest
+php artisan test
+```
+- テストファイルごとにテスト実行
+```
+php artisan test --filter=テスト名
+```
+（例）
+```
+php artisan test --filter=RegisterTest
 ```
 
 ## 補足事項
 - 画像アップロード時の画面に即時反映はJavaScriptを使用しないと難しいため、アップロード時は何も表示されません。フォーム送信後に画像が反映されているかのご確認をお願いいたします。
 - stripe決済はまだ開発段階のため、現段階では「購入する」ボタン押下で先に購入完了し、決済画面に遷移する仕様です。(決済完了画面未作成)
 - メール認証機能を実装済みです。「認証はこちらから」ボタンで自動認証され、Mailhog で確認可能です。
+- 応用機能追加に伴い、テストケースの内容を多少変更しています。
+RegisterTest.php: 全ての項目が入力されている場合、会員情報が登録され、メール認証誘導画面に遷移される<br>

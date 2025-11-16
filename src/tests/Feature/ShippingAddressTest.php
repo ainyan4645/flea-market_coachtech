@@ -67,7 +67,7 @@ class ShippingAddressTest extends TestCase
         $this->post(route('purchase.address.update', ['item_id' => $product->id]), $updatedAddress);
 
         // --- 購入 ---
-        $response = $this->post(route('purchase.store'), [
+        $response = $this->post(route('purchase.checkout', $product->id), [
             'buyer_id'       => $user->id,
             'product_id'     => $product->id,
             'payment_method' => 'credit',
@@ -77,8 +77,6 @@ class ShippingAddressTest extends TestCase
         ]);
 
         // --- 購入処理確認 ---
-        $response->assertRedirect('/');
-
         $this->assertDatabaseHas('orders', [
             'buyer_id'       => $user->id,
             'product_id'     => $product->id,

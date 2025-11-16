@@ -140,7 +140,7 @@ class RegisterTest extends TestCase
         ]);
 
         // プロフィール設定画面に遷移
-        $response->assertRedirect('/mypage/profile');
+        $response->assertRedirect('/email/verify');
 
         // DBにユーザー情報が保存されていることを確認
         $this->assertDatabaseHas('users', [

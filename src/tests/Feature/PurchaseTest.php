@@ -27,7 +27,7 @@ class PurchaseTest extends TestCase
 
         $product = Product::factory()->create();
 
-        $response = $this->actingAs($user)->post(route('purchase.store'), [
+        $response = $this->actingAs($user)->post(route('purchase.checkout', $product->id), [
             'buyer_id' => $user->id,
             'product_id' => $product->id,
             'payment_method' => 'credit',
@@ -56,7 +56,7 @@ class PurchaseTest extends TestCase
         $product = Product::factory()->create(['is_sold' => false]);
 
         // 購入処理
-        $this->actingAs($user)->post(route('purchase.store'), [
+        $this->actingAs($user)->post(route('purchase.checkout', $product->id), [
             'buyer_id' => $user->id,
             'product_id' => $product->id,
             'payment_method' => 'credit',
@@ -80,7 +80,7 @@ class PurchaseTest extends TestCase
         $product = Product::factory()->create(['is_sold' => false]);
 
         // 購入処理
-        $this->actingAs($user)->post(route('purchase.store'), [
+        $this->actingAs($user)->post(route('purchase.checkout', $product->id), [
             'buyer_id' => $user->id,
             'product_id' => $product->id,
             'payment_method' => 'credit',
