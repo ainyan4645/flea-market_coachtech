@@ -14,6 +14,7 @@
 5. php artisan key:generate
 6. php artisan migrate
 7. php artisan db:seed
+8. php artisan storage:link
 
  ※permissionエラーが出る場合は `/contact-form__test` ディレクトリで以下のコマンドを実行してください。
  ```bash
@@ -31,3 +32,12 @@
 ## URL
 - 商品一覧画面(トップ)： http://localhost/
 - phpMyAdmin： http://localhost:8080/
+
+## 機能確認ユーザ
+- サンプル商品出品ユーザ
+メール： sell@example.com
+パスワード： password
+
+- 認証必須機能確認用ユーザ
+メール： testA@example.com
+パスワード： password

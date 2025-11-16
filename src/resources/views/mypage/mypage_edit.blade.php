@@ -15,11 +15,7 @@
         @method('PUT')
         <div class="img">
             <div class="img-inner">
-                @if($profile && $profile->profile_image)
-                    <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="プロフィール画像" class="img-display">
-                @else
-                    <img src="" alt="" class="img-display">
-                @endif
+                <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="" class="img-display">
             </div>
 
             <div class="img-upload-inner">
@@ -34,7 +30,7 @@
         @error('name')
         <div class="error">{{ $message }}</div>
         @enderror
-        <input type="text" name="name" class="name-input" value="{{ old('name', auth()->user()->name ?? '') }}">
+        <input type="text" name="name" class="name-input" value="{{ old('name', $user->name ?? '') }}">
 
         <h2 class="post">郵便番号</h2>
         @error('postal_code')

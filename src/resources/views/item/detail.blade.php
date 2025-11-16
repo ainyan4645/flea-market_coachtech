@@ -93,7 +93,11 @@
         @foreach($product->comments as $comment)
             <div class="comment-header">
                 <div class="comment-icon-inner">
-                    <img class="comment-icon" src="{{ $comment->user->icon ?? '' }}" alt="{{ $comment->user->name }}">
+                    @if($comment->user && $comment->user->icon)
+                        <img class="comment-icon" src="{{ $comment->user->icon }}" alt="">
+                    @else
+                        <div class="comment-icon-placeholder"></div>
+                    @endif
                 </div>
                 <span class="comment-user">
                     {{ $comment->user->name ?? '匿名ユーザー' }}

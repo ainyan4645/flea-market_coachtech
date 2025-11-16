@@ -20,7 +20,6 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;   /*はみ出し部分を非表示*/
     border-radius: 4px;
-    background-color: #d9d9d9;
     position: sticky;
     top: 210px;
 }
@@ -31,7 +30,7 @@
     object-fit: contain;  /*全体表示*/
     object-position: center;
     display: block;
-    background-color: #fff;
+    background-color: #d9d9d9;
 }
 
 .no-image {
@@ -228,6 +227,13 @@
     object-fit: cover;  /*枠いっぱい表示＆枠外切り取り*/
 }
 
+.comment-icon-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+}
+
 .comment-user {
     font-size: 30px;
     font-weight: bold;
@@ -238,11 +244,11 @@
 }
 
 .comment-body {
-    height: 70px;
+    min-height: 70px;
     background-color: #d9d9d9;
     font-size: 20px;
     font-weight: light;
-    padding: 0px 15px;
+    padding: 5px 15px;
     display: flex;
     align-items: center;
     margin-bottom: 40px;

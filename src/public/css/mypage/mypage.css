@@ -117,7 +117,7 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;   /*はみ出し部分を非表示*/
     border-radius: 4px;
-    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .content-img {

@@ -156,3 +156,11 @@
     color: #ffffff;
     margin-top: 65px;
 }
+
+.error {
+    color: #ff5555;
+    display: flex;
+    justify-content: left;
+    font-size: 20px;
+    margin: 0px 0px 0px 95px;
+}

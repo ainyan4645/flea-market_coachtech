@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -36,21 +35,15 @@ class AuthController extends Controller
 
     public function loginValid(LoginRequest $request)
     {
-        // 1. フォームリクエストでバリデーション
-        $validated = $request->validated();
+        // バリデーション & 認証チェックは LoginRequest 内で完結
+        $credentials = $request->only('email', 'password');
+        $user = Auth::guard('web')->getProvider()->retrieveByCredentials($credentials);
 
-        // 2. Fortifyの認証機能を使う
-        $user = Auth::guard('web')->getProvider()->retrieveByCredentials($validated);
-
-        if ($user && Auth::guard('web')->getProvider()->validateCredentials($user, $validated)) {
+        if ($user) {
             Auth::login($user, $request->filled('remember'));
             $request->session()->regenerate();
 
             return redirect()->intended('/');
         }
-
-        throw ValidationException::withMessages([
-            'email' => ['ログイン情報が登録されていません'],
-        ]);
     }
 }

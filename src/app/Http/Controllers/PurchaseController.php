@@ -76,7 +76,7 @@ class PurchaseController extends Controller
         session(['temp_address' => $tempAddress]);
 
         return redirect()->route('purchase.confirm', [
-        'id'           => $item_id,
+        'item_id'           => $item_id,
         'edit_payment' => request('edit_payment') ?? false,
     ]);
     }

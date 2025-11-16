@@ -23,6 +23,9 @@
 
         <div class="payment">
             <h2 class="payment-ttl">支払い方法</h2>
+            @error('payment_method')
+                <p class="error">{{ $message }}</p>
+            @enderror
             <form action="{{ route('purchase.updatePayment', ['item_id' => $product->id]) }}" method="POST">
                 @csrf
                 <select name="payment_method" class="payment-method" onchange="this.form.submit()">
@@ -31,9 +34,6 @@
                     <option value="credit" {{ $paymentMethod === 'credit' ? 'selected' : '' }}>カード支払い</option>
                 </select>
             </form>
-            @error('payment_method')
-                <p class="error">{{ $message }}</p>
-            @enderror
         </div>
 
         <div class="address">
@@ -45,17 +45,17 @@
                     変更する
                 </a>
             </div>
-            <p class="address-postcode">〒 {{ $address['postal_code'] ?: '未設定' }}</p>
-            <p class="address-detail">
-                {{ $address['address'] ?: '住所未登録' }}
-                {{ $address['building'] ?? '' }}
-            </p>
             @error('postal_code')
                 <p class="error">{{ $message }}</p>
             @enderror
             @error('address')
                 <p class="error">{{ $message }}</p>
             @enderror
+            <p class="address-postcode">〒 {{ $address['postal_code'] ?: '未設定' }}</p>
+            <p class="address-detail">
+                {{ $address['address'] ?: '住所未登録' }}
+                {{ $address['building'] ?? '' }}
+            </p>
         </div>
     </section>
 

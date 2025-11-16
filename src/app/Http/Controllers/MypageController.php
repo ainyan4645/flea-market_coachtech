@@ -15,7 +15,7 @@ class MypageController extends Controller
         $user = auth()->user();
         $profile = $user->profile;
 
-        return view('mypage.mypage_edit', compact('profile'));
+        return view('mypage.mypage_edit', compact('user', 'profile'));
     }
 
     public function update(ProfileRequest $request) {

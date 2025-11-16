@@ -7,8 +7,8 @@
 @section('content')
 <main>
     <div class="user">
-    <div class="user-icon-inner">
-            <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="プロフィール画像" class="user-icon">
+        <div class="user-icon-inner">
+            <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="" class="user-icon">
         </div>
         <p class="user-name">
             {{ $user->name }}

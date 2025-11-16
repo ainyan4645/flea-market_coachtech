@@ -44,17 +44,15 @@
 /* 商品リスト */
 .content-list {
     list-style: none;
-    margin: 75px 70px;
+    margin: 75px 70px 0px;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;    /* 幅いっぱいになったら折り返す */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);    /* 4列固定 */
     gap: 70px;
-    overflow-y: auto;
-    flex: 1; /* 残りの高さを全部使う */
 }
 
 .content-card {
-    width: 290px;
+    width: 100%;
 }
 
 .content-card-link {
@@ -99,11 +97,13 @@
     transform: translate(-50%, -50%) rotate(-15deg);
     background-color: rgba(255, 0, 0, 0.8);
     color: #fff;
-    padding: 4px 40px;
-    font-size: 25px;
+    padding: 1% 20%;
+    font-size: 2.5vw;
     font-weight: bold;
     border-radius: 4px;
     z-index: 10;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .content-ttl {
