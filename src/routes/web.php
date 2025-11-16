@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,31 +36,57 @@ Route::middleware('guest')->group(function () {
 });
 
 
-/** ログインユーザのみ **/
-Route::middleware(['auth'])->group(function () {
-    /* 商品詳細画面 */
-    Route::post('/item/{item_id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
-    Route::post('/item/{item_id}/comment', [ItemController::class, 'comment'])->name('item.comment');
+/** ログインユーザのみ（メール認証済） **/
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('item')->group(function () {
+        /* 商品詳細画面 */
+        Route::post('/{item_id}/favorite', [ItemController::class, 'favorite'])->name('product.favorite');
+        Route::post('/{item_id}/comment', [ItemController::class, 'comment'])->name('item.comment');
+    });
 
-    /* 商品購入画面 */
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
-    Route::post('/purchase/payment_method/update/{item_id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
-
-    /* 決済画面 */
-    Route::post('/purchase/checkout/{item_id}', [PurchaseController::class, 'checkout'])->name('purchase.checkout');
-
-    /* 住所変更ページ */
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address');
-    Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
+    Route::prefix('purchase')->group(function () {
+        /* 商品購入画面 */
+        Route::get('/{item_id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
+        Route::post('/payment_method/update/{item_id}', [PurchaseController::class, 'updatePayment'])->name('purchase.updatePayment');
+        /* 決済画面 */
+        Route::post('/checkout/{item_id}', [PurchaseController::class, 'checkout'])->name('purchase.checkout');
+        /* 住所変更ページ */
+        Route::get('/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address');
+        Route::post('/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
+    });
 
     /* 商品出品画面 */
     Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
     Route::post('/sell/store', [ItemController::class, 'store'])->name('sell.store');
 
-    /* プロフィール画面 */
-    Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
-
-    /* プロフィール編集画面 */
-    Route::get('/mypage/profile', [MypageController::class, 'mypageEdit'])->name('mypage.edit');
-    Route::put('/mypage/profile/update', [MypageController::class, 'update'])->name('mypage.update');
+    Route::prefix('mypage')->group(function () {
+        /* プロフィール画面 */
+        Route::get('/', [MypageController::class, 'mypage'])->name('mypage');
+        /* プロフィール編集画面 */
+        Route::get('/profile', [MypageController::class, 'mypageEdit'])->name('mypage.edit');
+        Route::put('/profile/update', [MypageController::class, 'update'])->name('mypage.update');
+    });
 });
+
+
+/** メール認証関連 **/
+Route::middleware('auth')->group(function () {
+    // 認証メール誘導画面
+    Route::get('/email/verify', function () {
+        return view('auth.verify');
+    })->name('verification.notice');
+
+    // ボタン押下で自動認証
+    Route::post('/email/verify/auto', [VerificationController::class, 'autoVerify'])
+        ->name('verification.auto');
+
+    // 認証メール再送信
+    Route::post('/email/verification-notification', [VerificationController::class, 'resend'])
+        ->middleware('throttle:6,1')
+        ->name('verification.send');
+});
+
+// メールリンククリック時（認証完了）
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+    ->middleware(['auth', 'signed'])
+    ->name('verification.verify');

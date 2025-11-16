@@ -30,7 +30,8 @@ class AuthController extends Controller
         // ログイン
         Auth::login($user);
 
-        return redirect('/mypage/profile');
+        // メール認証誘導画面へ
+        return redirect()->route('verification.notice');
     }
 
     public function loginValid(LoginRequest $request)
@@ -39,11 +40,18 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         $user = Auth::guard('web')->getProvider()->retrieveByCredentials($credentials);
 
-        if ($user) {
-            Auth::login($user, $request->filled('remember'));
-            $request->session()->regenerate();
+        if ($user && Auth::attempt($credentials, $request->filled('remember'))) {
+            // メール未認証ならログアウトして誘導画面へ
+            if (! $user->hasVerifiedEmail()) {
+                Auth::logout();
+                return redirect()->route('verification.notice');
+            }
 
+            $request->session()->regenerate();
             return redirect()->intended('/');
         }
+
+        // 認証失敗時
+        return back()->withErrors(['email' => '認証に失敗しました。']);
     }
 }

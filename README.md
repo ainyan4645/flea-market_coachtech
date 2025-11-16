@@ -9,7 +9,7 @@
 ### Laravel環境構築
 1. cd src
 2. cp .env.example .env
-3. .env.testingは？？？？？？？？？？？？？？？
+3. cp .env.test_example .env.testing
 4. docker-compose exec php bash
 5. composer install
 6. php artisan key:generate
@@ -17,8 +17,17 @@
 8. php artisan db:seed
 9. php artisan storage:link
 10. composer require stripe/stripe-php
+11. Stripeアカウントを作成 [https://stripe.com/jp](https://stripe.com/jp)
+12. stripeのテストモードで「開発者 > APIキー」を選択
+13. 公開可能キーとシークレットキーをコピー
+14. `.env`と`.env.testing`の`STRIPE_KEY` / `STRIPE_SECRET」`に貼り付け
+```
+STRIPE_KEY=pk_test_xxxxxx
+STRIPE_SECRET=sk_test_xxxxxx
+```
+15. php artisan config:clear
 
- ※permissionエラーが出る場合は `/contact-form__test` ディレクトリで以下のコマンドを実行してください。
+ ※permissionエラーが出る場合は `/flea-market_coachtech` ディレクトリで以下のコマンドを実行してください。
  ```bash
  sudo chmod -R 777 src/*
  ```
@@ -35,6 +44,7 @@
 ## 開発環境(URL)
 - 商品一覧画面(トップ)： http://localhost/
 - phpMyAdmin： http://localhost:8080/
+- Mailhog(メール確認)： http://localhost:8026
 
 ## 機能確認用ユーザ
 - サンプル商品出品ユーザ<br>
@@ -47,4 +57,5 @@
 
 ## 補足事項
 - 画像アップロード時の画面に即時反映はJavaScriptを使用しないと難しいため、アップロード時は何も表示されません。フォーム送信後に画像が反映されているかのご確認をお願いいたします。
-- stripe決済はまだ開発段階のため、現段階ではカード決済完了時にのみ購入完了します。
+- stripe決済はまだ開発段階のため、現段階では「購入する」ボタン押下で先に購入完了し、決済画面に遷移する仕様です。(決済完了画面未作成)
+- メール認証機能を実装済みです。「認証はこちらから」ボタンで自動認証され、Mailhog で確認可能です。
