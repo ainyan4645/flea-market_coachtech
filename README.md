@@ -17,11 +17,15 @@
 8. php artisan migrate
 9. php artisan db:seed
 10. php artisan storage:link
-11. 公開可能キーとシークレットキーを`.env`と`.env.testing`の末尾に貼り付け
-
-※公開可能キー、シークレットキーはセキュリティ上別途提示
-
-12.  php artisan config:clear
+11. Stripeアカウントを作成 [https://stripe.com/jp](https://stripe.com/jp)
+12. stripeのテストモードで「開発者 > APIキー」を選択
+13. 公開可能キーとシークレットキーをコピー
+14. `.env`と`.env.testing`に、`STRIPE_KEY` / `STRIPE_SECRET`の項目を作って貼り付け
+```
+STRIPE_KEY=pk_test_xxxxxxxxxx
+STRIPE_SECRET=sk_test_xxxxxxxxxx
+```
+15.  php artisan config:clear
 
  ※permissionエラーが出る場合は `/flea-market_coachtech` ディレクトリで以下のコマンドを実行してください。
  ```bash
@@ -73,4 +77,4 @@ php artisan test --filter=RegisterTest
 - stripe決済はまだ開発段階のため、現段階では「購入する」ボタン押下で先に購入完了し、決済画面に遷移する仕様です。(決済完了画面未作成)
 - メール認証機能を実装済みです。「認証はこちらから」ボタンで自動認証され、Mailhog で確認可能です。
 - 応用機能追加に伴い、テストケースの内容を多少変更しています。<br>
-RegisterTest.php: 全ての項目が入力されている場合、会員情報が登録され、メール認証誘導画面に遷移される
+RegisterTest.phpの期待挙動: 全ての項目が入力されている場合、会員情報が登録され、"メール認証誘導画面"に遷移される
