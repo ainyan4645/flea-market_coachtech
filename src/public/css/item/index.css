@@ -13,6 +13,7 @@
     background-color: #fff;
     position: sticky;
     top: 80px;
+    z-index: 100;
 }
 
 .tabs {
