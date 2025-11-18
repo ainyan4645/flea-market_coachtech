@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
             'name' => '出品テストユーザー',
             'email' => 'sell@example.com',
             'password' => Hash::make('password'),
+            'email_verified_at' => now(),
         ]);
         // 同時にProfile作成
         Profile::create([
@@ -35,6 +36,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'テストユーザーA',
             'email' => 'testA@example.com',
             'password' => Hash::make('password'),
+            'email_verified_at' => now(),
         ]);
         Profile::create([
             'user_id' => $user2->id,
