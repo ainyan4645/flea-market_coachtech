@@ -9,7 +9,6 @@ use App\Models\Product;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Stripe;
-use Stripe\Checkout\Session;
 
 class PurchaseController extends Controller
 {
