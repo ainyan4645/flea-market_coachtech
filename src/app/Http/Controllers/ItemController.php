@@ -8,7 +8,6 @@ use App\Http\Requests\CommentRequest;
 use App\Models\Product;
 use App\Models\Like;
 use App\Models\Comment;
-use App\Models\Profiles;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
