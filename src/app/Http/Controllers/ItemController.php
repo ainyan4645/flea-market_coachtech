@@ -8,6 +8,7 @@ use App\Http\Requests\CommentRequest;
 use App\Models\Product;
 use App\Models\Like;
 use App\Models\Comment;
+use App\Models\Profiles;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,7 +63,11 @@ class ItemController extends Controller
     // 商品詳細表示
     public function detail($item_id)
     {
-        $product = Product::with('categories', 'likes', 'comments')->findOrFail($item_id);
+        $product = Product::with([
+            'categories',
+            'likes',
+            'comments.user.profile'
+        ])->findOrFail($item_id);
         $isFavorite = false;
         if (Auth::check()) {
             $isFavorite = $product->likes()->where('user_id', Auth::id())->exists();

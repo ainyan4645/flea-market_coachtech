@@ -217,14 +217,14 @@
     width: 70px;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    border-radius: 50px;
+    border-radius: 50%;
     margin-bottom: 20px;
 }
 
 .comment-icon {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /*枠いっぱい表示＆枠外切り取り*/
+    object-fit: contain;
 }
 
 .comment-icon-placeholder {

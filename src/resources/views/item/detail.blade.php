@@ -93,8 +93,8 @@
         @foreach($product->comments as $comment)
             <div class="comment-header">
                 <div class="comment-icon-inner">
-                    @if($comment->user && $comment->user->icon)
-                        <img class="comment-icon" src="{{ $comment->user->icon }}" alt="">
+                    @if($comment->user && $comment->user->profile && $comment->user->profile->profile_image)
+                        <img class="comment-icon" src="{{ asset('storage/' . $comment->user->profile->profile_image) }}" alt="プロフィール画像">
                     @else
                         <div class="comment-icon-placeholder"></div>
                     @endif
