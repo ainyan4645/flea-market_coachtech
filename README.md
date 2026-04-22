@@ -36,25 +36,24 @@ CRUD・認証・決済の理解を深めることを目的に作成しました�
 ## ■ 画面イメージ
 
 ### 🏠 商品一覧
-- トップ画面（ゲスト）
-- トップ画面（ユーザ）
+- トップ画面（ログイン前）
+- トップ画面（ユーザ_マイリスト）
 
-![トップ_ログイン前](./images/top_guest.png)
-![トップ_ログイン後](./images/top_user.png)
+![トップ_ログイン前](./images/top.png)
+![トップ_マイリスト](./images/mylist.png)
 
 ---
 
 ### 🔍 商品詳細・購入
-- 商品詳細画面(ゲスト)
-- 商品詳細画面(ユーザ)
+- 商品詳細画面_1
+- 商品詳細画面_2
 - 商品購入画面
-- 支払い方法選択画面
+- 支払い画面
 - 送付先住所変更画面
 
-![商品詳細(ゲスト)](./images/detail_guest.png)
-![商品詳細(ユーザ)](./images/detail_guest.png)
+![商品詳細1](./images/detail_1.png)
+![商品詳細2](./images/detail_2.png)
 ![購入](./images/purchase.png)
-![購入](./images/purchase_payment_method.png)
 ![住所変更](./images/address.png)
 
 ---
@@ -71,22 +70,20 @@ CRUD・認証・決済の理解を深めることを目的に作成しました�
 ---
 
 ### 🛍 出品機能
-- 商品出品画面
-- 商品状態選択時
+- 商品出品画面_1
+- 商品出品画面_2
 
-![出品](./images/sell.png)
-![商品状態選択](./images/sell?select_condition.png)
+![出品_1](./images/sell_1.png)
+![出品_2](./images/sell_2.png)
 
 ---
 
 ### 📄 マイページ
 - プロフィール画面
 - プロフィール編集
-- プロフィール編集(初回ログイン時)
 
 ![プロフィール](./images/profile.png)
 ![編集](./images/profile_edit.png)
-![編集_初回ログイン](./images/profile_edit_first_login.png)
 
 ---
 
@@ -94,7 +91,7 @@ CRUD・認証・決済の理解を深めることを目的に作成しました�
 
 ### ① Fortifyをベースにした認証機構のカスタマイズ
 
-Laravel Fortifyをそのまま利用するのではなく、  
+Laravel Fortifyをそのまま利用するのではなく、
 **内部の処理を理解した上で必要な部分のみ利用し、認証フローを独自に制御しました。**
 
 #### ■ 実装内容
@@ -115,7 +112,7 @@ Laravel Fortifyをそのまま利用するのではなく、
 ---
 
 ### ② UIの再現性
-提供されたFigmaデザインを元に、  
+提供されたFigmaデザインを元に、
 **ピクセル単位での再現を意識して実装**しました。
 
 - レイアウト崩れ防止
